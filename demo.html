@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compute</title>
+    <link rel = "stylesheet" href="mystyle.css ">  
+
+</head>
+<body>
+  <script>
+    function loadrate() {
+      var input = document.getElementById('input');
+      var inputnum = input.value;
+
+        const usdAmount = (inputnum / 30.94).toFixed(2);
+        const eurAmount = (inputnum / 33.45).toFixed(2);
+        const jpyAmount = (inputnum / 0.2219).toFixed(2);
+        const krwAmount = (inputnum / 0.02537).toFixed(2);
+        const audAmount = (inputnum / 20.45).toFixed(2);
+
+        table += "<p>美金: " + usdAmount + " USD</p>" +
+        "<p>歐元: " + eurAmount + " EUR</p>" +
+        "<p>日圓: " + jpyAmount + " JPY</p>" +
+        "<p>韓元: " + krwAmount + " KRW</p>" +
+        "<p>澳幣: " + audAmount + " AUD</p>";
+
+        document.getElementById("table").innerHTML = table;
+           
+    /*題目2. 讀取xml黨*/
+      const xhttp = new XMLHttpRequest();
+
+      xhttp.onload = function() {
+        show(this, inputnum);
+      }
+
+      xhttp.open("GET", "./rate.xml");
+      xhttp.send();
+    }
+
+    function show(xml, inputnum) {
+      const rate = xml.responseXML;
+      const x = rate.getElementsByTagName("rate");
+      let table = "";
+      for (let i = 0; i < x.length; i++) {
+    
+        const usdRate = parseFloat(x[i].getElementsByTagName("USD")[0].childNodes[0].nodeValue);
+        const eurRate = parseFloat(x[i].getElementsByTagName("EUR")[0].childNodes[0].nodeValue);
+        const jpyRate = parseFloat(x[i].getElementsByTagName("JPY")[0].childNodes[0].nodeValue);
+        const krwRate = parseFloat(x[i].getElementsByTagName("KRW")[0].childNodes[0].nodeValue);
+        const audRate = parseFloat(x[i].getElementsByTagName("AUD")[0].childNodes[0].nodeValue);
+
+        const usdAmount = (inputnum / 30.94).toFixed(2);
+        const eurAmount = (inputnum / 33.45).toFixed(2);
+        const jpyAmount = (inputnum / 0.2219).toFixed(2);
+        const krwAmount = (inputnum / 0.02537).toFixed(2);
+        const audAmount = (inputnum / 20.45).toFixed(2);
+
+        table += "<p>美金: " + usdAmount + " USD</p>" +
+        "<p>歐元: " + eurAmount + " EUR</p>" +
+        "<p>日圓: " + jpyAmount + " JPY</p>" +
+        "<p>韓元: " + krwAmount + " KRW</p>" +
+        "<p>澳幣: " + audAmount + " AUD</p>";
+    }
+
+        document.getElementById("table").innerHTML = table;
+    }
+    /*提木四*/
+    function clean() {
+      document.getElementById("input").value = "";
+      document.getElementById("table").innerHTML = "";
+    }
+  </script>
+  <div class="up">
+    <h1>這是一個匯率轉換機</h1>
+    <input type="text" id="input" placeholder="请输入要換算成其他幣別的台幣金額">
+    <!-- 題目一：按按鈕輸出--->
+    <button type="button" id="change" onclick="loadrate()">神奇的轉換</button>
+    <button type="button" id="clean" onclick="clean()">清空輸入與輸出</button>
+  </div>
+
+  <div class="down" id="table">
+  </div>
+</body>
+</html>
