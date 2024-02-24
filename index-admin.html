@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>tripy</title>
+	<meta charset="UTF-8">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="statics/js/jquery-3.4.1.min.js"></script>
+  	<script src="statics/js/jquery-confirm.js"></script>
+  	<style>
+     
+	
+	.filter-tope-group {
+	    display: flex;
+	    flex-wrap: wrap;
+	    justify-content: center;
+	}
+	
+	.button-wrapper {
+	    width: 100%; /* 讓每個按鈕占據一行 */
+	    box-sizing: border-box; /* 避免寬度超出容器 */
+	    margin-bottom: 10px; /* 添加底部間距，讓按鈕之間有空隙 */
+	    display: flex;
+	    justify-content: center;
+	}
+	
+	.filter-tope-group button {
+	    width: 100%;
+	    max-width: 400px; /* 調整最大寬度，根據需要增加數值 */
+	    box-sizing: border-box;
+	    padding: 15px; /* 調整按鈕內邊距 */
+	    font-size: 1.5em; /* 調整按鈕字體大小 */
+	}
+
+   
+
+
+
+    </style>
+  	<script src="statics/js/big.min.js"></script>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/revolution/css/layers.css">
+	<link rel="stylesheet" type="text/css" href="vendor/revolution/css/navigation.css">
+	<link rel="stylesheet" type="text/css" href="vendor/revolution/css/settings.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body class="animsition">
+
+	<!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<nav class="container-header-desktop">
+			<div class="wrap-menu-desktop">
+				<div class="limiter-menu-desktop container">					
+					<!-- Logo desktop -->		
+					<div class="logo">
+						<a href="index-admin.html"><img src="images/icons/newlogo.png" alt="LOGO"></a>
+					</div>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu respon-sub-menu">	
+
+							<li>
+								<a href="tripy-SeeAllScene.html" style="font-weight: bold;">所有景點</a>
+								
+							</li>
+							<li>
+								<a href="tripy-AddNewScene.html" style="font-weight: bold;">新增景點</a>
+								
+							</li>
+							
+							<li>
+								<a href="tripy-SeeAllMember.html" style="font-weight: bold;">所有會員</a>
+								
+							</li>
+							<li>
+								<a href="tripy-SeeAllAdmin.html" style="font-weight: bold;">所有管理員</a>
+							</li>
+							
+             				<li id="logout">
+                			</li>
+
+						</ul>
+					</div>		
+				</div>
+			</div>	
+		</nav>
+		<style>
+            .bold-chinese-text {
+                font-family: '微軟正黑體', sans-serif;
+                font-weight: bold; 
+            }
+        </style>
+
+	</header>
+
+	
+	<div class="bg-0 p-t-95 p-b-50">
+	    <div class="p-rl-50 p-rl-15-sr1199">
+	        <div class="p-b-45">
+	            <div class="flex-wr-c-c filter-tope-group">
+	                <div class="button-wrapper">
+	                    <button class="t1-m-6 cl-16 hov-btn3 trans-02 p-rl-10 p-tb-3 m-all-5 active-2" id="scene">
+	                	<a style="text-decoration: none; color: inherit;">查看所有景點</a>
+						</button>
+	                </div>
+	                <div class="button-wrapper">
+	                    <button class="t1-m-6 cl-16 hov-btn3 trans-02 p-rl-10 p-tb-3 m-all-5 active-2" id="add_scene">
+	                	<a style="text-decoration: none; color: inherit;">新增景點</a>
+						</button>
+	                </div>
+	                
+	                <div class="button-wrapper">
+	                    <button class="t1-m-6 cl-16 hov-btn3 trans-02 p-rl-10 p-tb-3 m-all-5 active-2" id="seeAllMember">
+		                <a style="text-decoration: none; color: inherit;">查看所有會員</a>
+						</button>
+	                </div>
+	                <div class="button-wrapper">
+	                    <button class="t1-m-6 cl-16 hov-btn3 trans-02 p-rl-10 p-tb-3 m-all-5 active-2" id="seeAllAdmin">
+	                	<a style="text-decoration: none; color: inherit;">查看所有管理員</a>
+						</button>
+	                </div>
+	                
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	
+	<script>
+		var url_string = window.location.href;
+      	var url = new URL(url_string);
+		console.log(url.searchParams.get("user_id") + url.searchParams.get("email") + url.searchParams.get("password"));
+      	var user_id = url.searchParams.get("user_id");
+      	if (user_id == "" || user_id == "null") {
+        	user_id = null;
+      	}
+      	var email = url.searchParams.get("email");
+      	if (email == "" || email == "null") {
+        	email = null;
+      	}
+      	var password = url.searchParams.get("password");
+      	if ((password = "" || password == "null")) {
+        	password = null;
+      	}
+      	
+		
+		$(document).ready(function() {
+    		$('#scene').click(function() {
+	        	var url = "tripy-SeeAllScene.html?user_id=" + user_id + "&email=" + email +"&password=" + password;
+		    window.history.pushState({}, '', url);		
+		    window.location.href = url;
+		    
+		    });
+		
+		    $('#add_scene').click(function() {
+		        window.location.href = "tripy-AddNewScene.html";
+		    });
+		
+			$('#edit_scene').click(function() {
+		        window.location.href = "tripy-ModifyScene.html";
+		    });
+		    
+		    $('#seeAllMember').click(function() {
+		        window.location.href = "tripy-SeeAllMember.html";
+		    });
+		
+		    $('#seeAllAdmin').click(function() {
+		        window.location.href = "tripy-SeeAllAdmin.html";
+		    });
+		});
+		
+		
+		
+		//logout
+		$("#logout").empty();
+        var logout_html = "";
+        logout_html += "<a href='#' onclick='Logout()' style='font-weight: bold'>登出</a> ";
+
+        $("#logout").append(logout_html);
+        
+        
+      function Logout() {
+        swal({
+          title: `確認要登出嗎`,
+          icon: "warning",
+          dangerMode: true,
+
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value != null) {
+            user_id = null;
+            email = null;
+            password = null;
+            swal("您已成功登出", {
+              icon: "success",
+              buttons: {
+                confirm: {
+                  text: "確定",
+                  value: true,
+                  visible: true,
+                  className: "btn-primary",
+                  closeModal: true,
+                },
+              },
+            }).then((value) => {
+              if (value) {
+                // 導向到新的頁面
+                window.location.href = "index.html";
+              }
+            });
+          } else {
+            swal.close();
+          }
+        });
+      }
+
+	</script>
+	
+	
+	
+
+
+
+<!--===============================================================================================-->	
+	
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script src="vendor/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script src="vendor/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script src="vendor/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script src="vendor/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script src="vendor/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script src="vendor/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script src="vendor/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script src="vendor/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script src="vendor/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script src="vendor/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script src="js/revo-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/parallax100/parallax100.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/waypoint/jquery.waypoints.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countterup/jquery.counterup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/slick/slick.min.js"></script>
+	<script src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+<!--===============================================================================================-->
+
+</body>
+</html>

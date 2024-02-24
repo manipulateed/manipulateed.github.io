@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>tripy</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body class="animsition">
+	<!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<nav class="container-header-desktop">
+			<div class="wrap-menu-desktop">
+				<div class="limiter-menu-desktop container">					
+					<!-- Logo desktop -->		
+					<div class="logo" id="index">
+		              <a href="index.html"
+		                ><img src="images/icons/newlogo.png" alt="LOGO"
+		              /></a>
+		            </div>
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu respon-sub-menu">
+			                <li id="city"></li>
+			                <li id="plan"></li>
+			                <li id="FL"></li>
+			                <li id="login"></li>
+			                <li id="logout"></li>
+			            </ul>
+					</div>					
+				</div>
+			</div>	
+		</nav>
+
+		<style>
+			.size-a-7 {
+				width: 50px;
+				height: 50px;
+			}
+
+		</style>
+
+		
+	</header>
+	<div class="col-auto p-l-200">
+		<button
+		  class="size-a-1 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn1 trans-02"
+		  onclick="createPlan()"
+		>
+		  <i class="fa fa-plus m-r-2"> 新增旅遊行程</i>
+		</button>
+	</div>
+
+	<!-- Content -->
+	<div class="bg-0 p-t-50 p-b-50">
+		<div class="container">
+			<div class="row isotope-grid" id ="Addplan">
+					<!-- 行程 -->		
+				
+				<!-- <div class="col-lg-4 p-b-50 isotope-item self">
+					<div class="bg-0 h-full">
+						<a href="Itinerary.html" class="hov-img0 of-hidden">
+							<img src="images/台南.jpg" alt="IMG" height= "200px">
+						</a>
+
+						<div class="bg-0 p-t-20">
+							<h4 class="p-b-12">
+								<a href="Itinerary.html" class="t1-m-1 cl-3 hov-link2 trans-02">
+									規劃臺南兩天一夜
+								</a>
+							</h4>
+							
+							<div class="flex-wr-s-c p-b-15">
+								<div class="p-r-20">
+									<i class="fs-14 cl-7 fa fa-calendar m-r-2"></i>
+
+									<a href="" class="t1-s-2 cl-11 hov-link3">
+										2023/12/4 - 2023/12/5
+									</a>
+								</div>
+
+								<div class="p-rl-20 bo-l-1 bcl-12" onclick="EditMember()">
+									<i class="fs-14 cl-7 fa fa-user m-r-2"></i>
+
+									<a href="javascript:void(0)" class="t1-s-2 cl-11 hov-link3">
+										管理
+									</a>
+								</div>
+								<div>
+
+								</div>
+
+								<div class="p-l-20 bo-l-1 bcl-12" onclick="EditPlan()">
+									<i class="fs-14 cl-7 fa fa-pencil m-r-2"></i>
+
+									<a href="" class="t1-s-2 cl-11 hov-link3">
+										編輯
+									</a>
+								</div>
+								<div class="p-l-20 bo-l-1 bcl-12" onclick="EditPlan()">
+									<i class="fs-14 cl-7 fa fa-pencil m-r-2"></i>
+
+									<a href="" class="t1-s-2 cl-11 hov-link3">
+										編輯
+									</a>
+								</div>
+
+							</div>
+
+							<a href="Itinerary.html" class="d-inline-flex flex-c-c size-a-1 p-rl-15 t1-s-2 text-uppercase cl-0 bg-11 hov-btn1 trans-02">
+								開始規劃
+							</a>
+						</div>
+					</div>
+				</div> -->
+				
+					
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- Footer -->
+	<footer>
+		
+	</footer>
+
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/parallax100/parallax100.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/waypoint/jquery.waypoints.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countterup/jquery.counterup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/slick/slick.min.js"></script>
+	<script src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<script src="statics/js/jquery-3.4.1.min.js"></script>
+  	<script src="statics/js/jquery-confirm.js"></script>
+  	<script src="statics/js/big.min.js"></script>
+
+    <!-- SweetAlert的JS套件 -->
+
+	 <!-- 新增清單 -->
+	 <script type="text/javascript">
+		var url_string = window.location.href;
+  		var url = new URL(url_string);
+		var user_id = url.searchParams.get("user_id");
+		
+		var email = url.searchParams.get("email");
+	    var password = url.searchParams.get("password");
+	      // 將user_id變成字串
+	    var user_id_str = user_id.toString();
+	
+	    $(document).ready(function () {
+	        showCity();
+	        showIndex();
+	        showPlan();
+	        showFL();
+	        showName();
+	      });
+		// var scene_id = url.searchParams.get("scene_id");
+		// var ItineraryList_id = url.searchParams.get("ItineraryList_id");
+		// var ItineraryList_name = url.searchParams.get("ItineraryList_id");
+		// var ItineraryList_start = url.searchParams.get("ItineraryList_start");
+		// var ItineraryList_end = url.searchParams.get("ItineraryList_end");
+		// var collaborator_name = url.searchParams.get("collaboratorList");
+		
+		function getStartPlanningData() {
+		  	$.ajax({
+	          type: "GET",
+	          url: "http://localhost:8090/NCU_MIS_SA/api/ItineraryList.do",
+	          data: "user_id=" + user_id,
+	          crossDomain: true,
+	          cache: false,
+	          dataType: 'json',
+	          timeout: 5000,
+	          success: function (response) {
+	              if(response.status == 200){
+	            	  updateHTML(response.response.data);
+	              }
+	          },
+	          error: function () {
+	              alert("無法連線到伺服器！");
+	          }
+	    	});
+	  	}
+	  	getStartPlanningData();
+
+
+  
+		function updateHTML(data) {
+
+			var inner_html = "";
+			  
+			$.each(data, function (k, v) {
+				inner_html += updateStartPlanningTable(v);
+			});
+			 
+			$("#Addplan").append(inner_html);
+		
+		}
+		  
+		function updateStartPlanningTable(data) {
+			var table_html = "";
+			table_html +=   '<div class="col-lg-4 p-b-50 isotope-item self">';
+			table_html +=	'<div class="bg-0 h-full">';
+			table_html +=	'<a href="Itinerary.html?user_id='+user_id+'&email='+email+'&password='+password+'&ItineraryList_id='+data.id+'" class="hov-img0 of-hidden">';
+			table_html +=	'<img src="images/台南.jpg" alt="IMG" height= "200px">';
+			table_html +=	'</a>';
+			table_html +=	'<div class="bg-0 p-t-20">';
+			table_html +=	'<h4 class="p-b-12">';
+			table_html +=	'<a href="Itinerary.html?user_id='+user_id+'&email='+email+'&password='+password+'&ItineraryList_id='+data.id+'" id="name" class="t1-m-1 cl-3 hov-link2 trans-02">';
+			table_html +=	data.name;
+			table_html +=	'</a>';
+			table_html +=	'</h4>';
+			table_html +=	'<div class="flex-wr-s-c p-b-15">';
+			table_html +=	'<div class="p-r-20">';
+			table_html +=	'<i class="fs-14 cl-7 fa fa-calendar m-r-2"></i>';
+			table_html +=	'<a href="javascript:void(0)" class="t1-s-2 cl-11 hov-link3">';
+			table_html +=	data.start			;
+			table_html +=   ' - '	;
+			table_html +=   data.end;
+			table_html +=	'</a>';
+			table_html +=	'</div>';
+			table_html +=	'<div class="p-rl-20 bo-l-1 bcl-12" onclick="EditPlan('+data.id+')">';
+			table_html +=	'<i class="fs-14 cl-7 fa fa-pencil m-r-2"></i>';
+			table_html +=	'<a href="javascript:void(0)" class="t1-s-2 cl-11 hov-link3">編輯</a>';		
+			table_html +=	'</div>';		
+			table_html +=	'<div class="p-l-20 bo-l-1 bcl-12" onclick="DeletePlan('+data.id+')">';
+			table_html +=	'<i class="fs-14 cl-7 fa fa-trash m-r-2"></i>';
+			table_html +=	'<a href="javascript:void(0)" class="t1-s-2 cl-11 hov-link3">刪除</a>';		
+			table_html +=	'</div>';
+			table_html +=	'</div>';	
+			table_html +=	'<a href="Itinerary.html?user_id='+user_id+'&email='+email+'&password='+password+'&ItineraryList_id='+data.id+'" class="d-inline-flex flex-c-c size-a-1 p-rl-15 t1-s-2 text-uppercase cl-0 bg-11 hov-btn1 trans-02">開始規劃</a>';
+			table_html +=	'</div>';		
+			table_html +=	'</div>';
+			table_html +=	'</div>';
+
+			return table_html;		  
+		}
+		
+		var createPlan = function () {
+			swal({
+			title: "新增旅遊計畫",
+			content: {
+				element: "div",
+				attributes: {
+					innerHTML: `
+					<ul>
+						<li class="bo-b-1 bcl-14 m-b-18"style="margin-bottom:30px">
+							<div class="container flex-wr-sb-c t1-s-5 cl-5 hov-link2 trans-02 p-tb-3 bold-chinese-text">
+								<input id="planName" class="swal-input" placeholder="輸入計畫名稱" type="text">
+							</div>
+						</li>
+						
+						<li class="row col bo-b-1 bcl-14 m-b-18"style="margin-bottom:30px">
+							<label for="startDate">開始日期：</label>
+							<input id="startDate" class="swal-input" type="date">
+						</li>
+
+						<li class="row col bo-b-1 bcl-14 m-b-18"style="margin-bottom:30px">
+							<label for="endDate">結束日期：</label>
+							<input id="endDate" class="swal-input" type="date">
+						</li>
+					
+						<li class="bo-b-1 bcl-14 m-b-18"style="margin-bottom:30px">
+							<div class="container flex-wr-sb-c t1-s-5 cl-5 hov-link2 trans-02 p-tb-3 bold-chinese-text">
+								<label for="collaborator">新增協作者</label>
+								<label for="collaborator">(多位協作者用逗號隔開)</label>
+								<input id="collaborator" class="swal-input" placeholder="輸入協作者ID" type="text">
+							</div>
+						</li>
+						
+					</ul>
+					`
+				}
+			},
+			buttons: {
+				Btn: false,
+				confirm: {
+					text: "確認",
+					visible: true,
+				},
+				cancel: {
+					text: "取消",
+					visible: true,
+				},
+			},
+			}).then((result) => {
+				if (result) {
+					// 使用者按下確認按鈕
+					const planName = document.getElementById('planName').value;
+					const startDate = document.getElementById('startDate').value;
+					const endDate = document.getElementById('endDate').value;
+					const collaboratorString = document.getElementById('collaborator').value;
+					if (planName !== "" && startDate !== "" && endDate !== "") {
+						// 使用 JSON.stringify 將陣列轉換成 JSON 字串
+						const collaboratorArray = collaboratorString.split(',');
+						const cDate = new Date(startDate);
+						cDate.setDate(cDate.getDate()+1);
+						const n_sd = cDate.toISOString().split('T')[0];
+						const dDate = new Date(endDate);
+						dDate.setDate(dDate.getDate()+1);
+						const n_ed = dDate.toISOString().split('T')[0];
+						var data_object = {
+							"name": planName,
+							"start": n_sd,
+							"end": n_ed,
+							"Collaborators": collaboratorArray.map(collaborator => ({ collaborator })),
+							"user_id":user_id
+						};
+
+						// 將JSON格式轉換成字串
+						var data_string = JSON.stringify(data_object);
+
+						// 發出POST的AJAX請求
+						$.ajax({
+								type: "POST",
+								url: "api/ItineraryList.do",
+								data: data_string,
+								crossDomain: true,
+								cache: false,
+								dataType: 'json',
+								timeout: 5000,
+								success: function (response) {
+									if(response.status == 200){
+										 swal("新增成功", {
+											icon: "success",
+											buttons: {
+											confirm: {
+												text: "確定",
+												value: true,
+												visible: true,
+												className: "btn-primary",
+												closeModal: true,
+											},
+											},
+										}).then((value) => {
+											if (value) {
+											// 導向到新的頁面
+											window.location.href = url;
+											}
+										});
+									}
+									else if(response.status == 400){
+										swal("新增失敗"+response.message, {
+											icon: "error",
+											buttons: {
+												confirm: {
+													text: "確定",
+													value: true,
+													visible: true,
+													className: "btn-danger",
+													closeModal: true,
+												},
+											},
+										}).then((value) => {
+											if (value) {
+												// 導向到新的頁面
+												window.location.href = url;
+											}
+										});
+									}
+								},
+								error: function () {
+									alert("無法連線到伺服器！");
+								}
+						});
+					} else {
+						swal("請輸入計畫名稱、開始日期和結束日期");
+					}
+				} else {
+					// 使用者按下取消按鈕
+					swal.close();
+				}
+			});
+		};
+
+		
+		var EditPlan = function (dataID) {
+			swal("編輯收藏清單名稱", {
+			content: {
+				element: "input",
+			},
+			buttons: {
+				Btn: false,
+				confirm: {
+				text: "確認",
+				visible: true,
+				},
+				cancel: {
+				text: "取消",
+				visible: true,
+				},
+			},
+			}).then((result) => {
+				if (result) {
+					// 使用者按下確認按鈕
+					const planID = dataID;
+					const planName = result;
+					
+					if (planName !== "" ) {
+						var data_object = {
+							"id": planID,
+							"name": planName,
+							"user_id":user_id 
+						};
+
+						// 將JSON格式轉換成字串
+						var data_string = JSON.stringify(data_object);
+
+						// 發出POST的AJAX請求
+						$.ajax({
+								type: "PUT",
+								url: "api/ItineraryList.do",
+								data: data_string,
+								crossDomain: true,
+								cache: false,
+								dataType: 'json',
+								timeout: 5000,
+								success: function (response) {
+									if(response.status == 200){
+										 swal("編輯成功", {
+											icon: "success",
+											buttons: {
+											confirm: {
+												text: "確定",
+												value: true,
+												visible: true,
+												className: "btn-primary",
+												closeModal: true,
+											},
+											},
+										}).then((value) => {
+											if (value) {
+											// 導向到新的頁面
+											window.location.href = url;
+											}
+										});
+									}
+									else if(response.status == 400){
+										swal("編輯失敗", {
+											icon: "error",
+											buttons: {
+												confirm: {
+													text: "確定",
+													value: true,
+													visible: true,
+													className: "btn-danger",
+													closeModal: true,
+												},
+											},
+										}).then((value) => {
+											if (value) {
+												// 導向到新的頁面
+												window.location.href = url;
+											}
+										});
+									}
+								},
+								error: function () {
+									alert("無法連線到伺服器！");
+								}
+						});
+					} else {
+						swal("請輸入計畫名稱、開始日期和結束日期");
+					}
+				} else {
+					// 使用者按下取消按鈕
+					swal.close();
+				}
+			});
+		};
+
+		var DeletePlan = function (dataID) {
+			swal({
+				title: "確定要刪除此旅遊計畫嗎？",
+				icon: "warning",
+				buttons: {
+					Btn: false,
+					confirm: {
+						text: "確認",
+						visible: true,
+						className: "btn-danger"
+					},
+					cancel: {
+						text: "取消",
+						visible: true,
+					},
+				},
+			}).then((result) => {
+				if (result) {
+					// 使用者按下確認按鈕
+					const planID = dataID;
+					var data_object = {
+							"id": planID,
+						};
+
+					// 將JSON格式轉換成字串
+					var data_string = JSON.stringify(data_object);
+
+					// 發出 DELETE 的 AJAX 請求
+					$.ajax({
+						type: "DELETE",
+						url: "api/ItineraryList.do",
+						data: data_string,
+						crossDomain: true,
+						cache: false,
+						dataType: 'json',
+						timeout: 5000,
+						success: function (response) {
+							if (response.status == 200) {
+								swal("刪除成功", {
+									icon: "success",
+									buttons: {
+										confirm: {
+											text: "確定",
+											value: true,
+											visible: true,
+											className: "btn-primary",
+											closeModal: true,
+										},
+									},
+								}).then((value) => {
+									if (value) {
+										// 導向到新的頁面
+										window.location.href = url;
+									}
+								});
+							} else if (response.status == 400) {
+								swal("刪除失敗", {
+									icon: "error",
+									buttons: {
+										confirm: {
+											text: "確定",
+											value: true,
+											visible: true,
+											className: "btn-danger",
+											closeModal: true,
+										},
+									},
+								}).then((value) => {
+									if (value) {
+										// 導向到新的頁面
+										window.location.href = url;
+									}
+								});
+							}
+						},
+						error: function () {
+							alert("無法連線到伺服器！");
+						}
+					});
+				} else {
+					// 使用者按下取消按鈕
+					swal.close();
+				}
+			});
+		};
+	  function showCity() {
+        $("#city").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-City.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>景點</a>";
+
+        $("#city").append(inner_html);
+      }
+
+      function showPlan() {
+        $("#plan").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-StartPlanning.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>我的行程</a>";
+
+        $("#plan").append(inner_html);
+      }
+
+      function showFL() {
+        $("#FL").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-FavoriteList.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>我的收藏</a>";
+
+        $("#FL").append(inner_html);
+      }
+
+      function showName() {
+        $("#login").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-MemberDetail.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>會員資料</a>";
+
+        $("#logout").empty();
+        var logout_html = "";
+        logout_html +=
+          "<a href='#' onclick='Logout()' style='font-weight: bold'>登出</a> ";
+
+        $("#login").append(inner_html);
+        $("#logout").append(logout_html);
+      }
+
+      function showIndex() {
+        $("#index").empty();
+        var inner_html = "";
+        inner_html += "<a href='index.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>";
+        inner_html += "<img src='images/icons/newlogo.png' alt='LOGO' /></a>";
+
+        $("#index").append(inner_html);
+      }
+
+      function Logout() {
+        swal({
+          title: `確認要登出嗎`,
+          icon: "warning",
+          dangerMode: true,
+
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value != null) {
+            user_id = null;
+            email = null;
+            password = null;
+            swal("您已成功登出", {
+              icon: "success",
+              buttons: {
+                confirm: {
+                  text: "確定",
+                  value: true,
+                  visible: true,
+                  className: "btn-primary",
+                  closeModal: true,
+                },
+              },
+            }).then((value) => {
+              if (value) {
+                // 導向到新的頁面
+                window.location.href = "index.html";
+              }
+            });
+          } else {
+            swal.close();
+          }
+        });
+      }
+
+
+	</script>
+	
+
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>tripy</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/MagnificPopup/magnific-popup.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--===============================================================================================-->
+  </head>
+  <body class="animsition">
+    <!-- Header -->
+    <header>
+      <!-- Header desktop -->
+      <nav class="container-header-desktop">
+        <div class="wrap-menu-desktop">
+          <div class="limiter-menu-desktop container">
+            <!-- Logo desktop -->
+            <div class="logo" id="index">
+              <!-- <a href="index.html"
+                ><img src="images/icons/newlogo.png" alt="LOGO"
+              /></a> -->
+            </div>
+            <!-- Menu desktop -->
+            <div class="menu-desktop">
+              <ul class="main-menu respon-sub-menu">
+                <li id="city"></li>
+                <li id="plan"></li>
+                <li id="FL"></li>
+                <li id="login">
+                  <a
+                    href="tripy-login.html"
+                    class="hide-menu"
+                    style="font-weight: bold"
+                    >登入</a
+                  >
+                </li>
+                <li id="logout"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <style>
+        .bold-chinese-text {
+          font-family: "微軟正黑體", sans-serif;
+          font-weight: bold;
+        }
+      </style>
+    </header>
+
+    <!-- Title page -->
+    <section class="bg-img1" style="background-image: url(images/旅遊.jpg)">
+      <div class="container size-h-3 p-tb-30 flex-col-c-c">
+        <h2
+          class="t1-b-1 text-uppercase cl-0 txt-center m-b-25"
+          style="font-weight: bold"
+        >
+          體驗各種美好生活
+        </h2>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <div class="bg-0 p-t-95 p-b-50">
+      <div class="p-rl-50 p-rl-15-sr1199">
+        <div class="p-b-45">
+          <div class="flex-wr-c-c filter-tope-group">
+            <button
+              class="t1-m-6 cl-16 hov-btn3 trans-02 p-rl-10 p-tb-3 m-all-5 active-2"
+              id="all"
+            >
+              所有目的地
+            </button>
+          </div>
+        </div>
+        <div class="row isotope-grid" id="City_panel"></div>
+      </div>
+
+      <!-- SweetAlert的JS套件 -->
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+      <script>
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var user_id = url.searchParams.get("user_id");
+        if (user_id == "" || user_id == "null") {
+          user_id = null;
+        }
+        var email = url.searchParams.get("email");
+        if (email == "" || email == "null") {
+          email = null;
+        }
+        var password = url.searchParams.get("password");
+        if (password == "" || password == "null") {
+          password = null;
+        }
+
+        $(document).ready(function () {
+          Districts();
+          getAllCity();
+          showCity();
+          showIndex();
+          if (user_id != null && email != null && password != null) {
+            showPlan();
+            showFL();
+            showName();
+          }
+        });
+
+        function Districts() {
+          $.ajax({
+            type: "GET",
+            url: "http://localhost:8090/NCU_MIS_SA/api/district.do",
+            crossDomain: true,
+            cache: false,
+            dataType: "json",
+            timeout: 5000,
+            success: function (response) {
+              if (response.status == 200) {
+                var districtButtons = "";
+
+                $.each(response.response.data, function () {
+                  console.log("All Districts: ", response.response.data);
+                  districtButtons +=
+                    '<button class="t1-m-6 cl-16 hov-btn3 trans-02 p-rl-10 p-tb-3 m-all-5" data-district-id="' +
+                    this.id +
+                    '">' +
+                    this.first_name +
+                    "</button>";
+                });
+
+                $(".filter-tope-group").append(districtButtons);
+
+                // 獲取所有具有 'm-all-5' 類別的按鈕元素
+                var districtButtons = document.querySelectorAll(".m-all-5");
+                // 對每個按鈕設置點擊事件監聽器
+                districtButtons.forEach(function (button) {
+                  button.addEventListener("click", function () {
+                    // 獲取 data-district-id 屬性的值
+                    var districtId = this.getAttribute("data-district-id");
+
+                    // 調用函式並傳遞 districtId
+                    //console.log(districtId);
+                    if (districtId == null) {
+                      getAllCity();
+                    } else {
+                      //console.log(districtId);
+                      getCitiesByDistrictId(districtId);
+
+                      //按鈕根據點選改顏色
+                      districtButtons.forEach(function (btn) {
+                        btn.classList.remove("active-2");
+                      });
+                      this.classList.add("active-2");
+                    }
+                  });
+                });
+              }
+            },
+            error: function () {
+              alert("無法連線到伺服器！!");
+            },
+          });
+        }
+
+        //document.getElementById('all').addEventListener('click', getAllCity);
+
+        function getAllCity() {
+          $("#City_panel").empty();
+          $.ajax({
+            type: "GET",
+            url: "http://localhost:8090/NCU_MIS_SA/api/city.do",
+            crossDomain: true,
+            cache: false,
+            dataType: "json",
+            timeout: 5000,
+            success: function (response) {
+              if (response.status == 200) {
+                var city_panel = "";
+
+                $.each(response.response.data, function (u, v) {
+                  //console.log(response.response.data);
+                  city_panel += addAllCity(v);
+                });
+
+                $("#City_panel").append(city_panel);
+              }
+            },
+            error: function () {
+              alert("無法連線到伺服器！");
+            },
+          });
+        }
+
+        function addAllCity(data) {
+          console.log(data);
+          let inner_html = "";
+          inner_html +=
+            '<div class="col-sm-6 col-lg-4 p-b-45 isotope-item market-n">';
+          inner_html += '<div class="flex-col-s-c">';
+          inner_html += '<div class="w-full pos-relative wrap-pic-w m-b-16">';
+          inner_html +=
+            '<img src="images/' +
+            data.city_info.name +
+            '.jpg" height= "280px" >';
+          inner_html +=
+            '<div class="s-full ab-t-l flex-col-c-c hov-1 p-tb-30 p-rl-15">';
+          inner_html +=
+            '<a href="tripy-Scene.html?id=' +
+            data.city_info.id +
+            "&user_id=" +
+            user_id +
+            "&email=" +
+            email +
+            "&password=" +
+            password +
+            '" class="size-a-15 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn2 trans-02 p-rl-10 hov-1-2">';
+          inner_html += "找景點";
+          inner_html += "</a>";
+          inner_html += "</div></div>";
+          inner_html +=
+            '<a href="tripy-Scene.html?id=' +
+            data.city_info.id +
+            "&user_id=" +
+            user_id +
+            "&email=" +
+            email +
+            "&password=" +
+            password +
+            '" class="t1-m-1 cl-3 hov-link2 trans-02">';
+          inner_html += data.city_info.name;
+          inner_html += "</a>";
+          inner_html += "</div></div>";
+
+          return inner_html;
+        }
+
+        //get各區city
+        function getCitiesByDistrictId(id) {
+          //console.log(id)
+          $.ajax({
+            type: "GET",
+            url: "http://localhost:8090/NCU_MIS_SA/api/district.do",
+            crossDomain: true,
+            cache: false,
+            dataType: "json",
+            data: { id: id },
+            timeout: 5000,
+            success: function (response) {
+              if (response.status == 200) {
+                var city_panel = "";
+                //console.log(response);
+
+                $.each(response, function () {
+                  city_panel += addCityByDistrictId(this);
+                  //console.log (response);
+                });
+
+                $("#City_panel").empty();
+                $("#City_panel").append(city_panel);
+              }
+            },
+            error: function () {
+              alert("無法連線到伺服器！");
+            },
+          });
+        }
+
+        //把district中的 city 轉成html進去
+        function addCityByDistrictId(data) {
+          let inner_html = "";
+
+          //console.log(data);
+
+          if (
+            data.data &&
+            data.data.length > 0 &&
+            data.data[0].product_info &&
+            data.data[0].product_info.length > 0
+          ) {
+            for (let i = 0; i < data.data[0].product_info.length; i++) {
+              inner_html += '<div class="col-sm-6 col-lg-4 p-b-45 ">';
+              inner_html += '<div class="flex-col-s-c">';
+              inner_html +=
+                '<div class="w-full pos-relative wrap-pic-w m-b-16">';
+              inner_html +=
+                '<img src="images/' +
+                data.data[0].product_info[i].name +
+                '.jpg" height= "280px" >';
+              inner_html +=
+                '<div class="s-full ab-t-l flex-col-c-c hov-1 p-tb-30 p-rl-15">';
+              inner_html +=
+                '<a href="tripy-Scene.html?id=' +
+                data.data[0].product_info[i].id +
+                "&user_id=" +
+                user_id +
+                "&email=" +
+                email +
+                "&password=" +
+                password +
+                '" class="size-a-15 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn2 trans-02 p-rl-10 hov-1-2">';
+              inner_html += "找景點";
+              inner_html += "</a>";
+              inner_html += "</div></div>";
+              inner_html +=
+                '<a href="tripy-Scene.html?id=' +
+                data.data[0].product_info[i].id +
+                "&user_id=" +
+                user_id +
+                "&email=" +
+                email +
+                "&password=" +
+                password +
+                '" class="t1-m-1 cl-3 hov-link2 trans-02">';
+              inner_html += data.data[0].product_info[i].name;
+              inner_html += "</a>";
+              inner_html += "</div></div>";
+            }
+          } else {
+            console.error("Invalid data structure or missing product_info.");
+          }
+
+          return inner_html;
+        }
+        function showCity() {
+          $("#city").empty();
+          var inner_html = "";
+          inner_html += inner_html +=
+            "<a href='tripy-City.html?user_id=" + user_id;
+          inner_html += "&email=" + email + "&password=" + password + "'";
+          inner_html += "style='font-weight: bold'>景點</a>";
+
+          $("#city").append(inner_html);
+        }
+
+        function showPlan() {
+          $("#plan").empty();
+          var inner_html = "";
+          inner_html += "<a href='tripy-StartPlanning.html?user_id=" + user_id;
+          inner_html += "&email=" + email + "&password=" + password + "'";
+          inner_html += "style='font-weight: bold'>我的行程</a>";
+
+          $("#plan").append(inner_html);
+        }
+
+        function showFL() {
+          $("#FL").empty();
+          var inner_html = "";
+          inner_html += "<a href='tripy-FavoriteList.html?user_id=" + user_id;
+          inner_html += "&email=" + email + "&password=" + password + "'";
+          inner_html += "style='font-weight: bold'>我的收藏</a>";
+
+          $("#FL").append(inner_html);
+        }
+
+        function showName() {
+          $("#login").empty();
+          var inner_html = "";
+          inner_html += "<a href='tripy-MemberDetail.html?user_id=" + user_id;
+          inner_html += "&email=" + email + "&password=" + password + "'";
+          inner_html += "style='font-weight: bold'>會員資料</a>";
+
+          $("#logout").empty();
+          var logout_html = "";
+          logout_html +=
+              "<a href='#' onclick='Logout()' style='font-weight: bold'>登出</a> ";
+
+          $("#login").append(inner_html);
+          $("#logout").append(logout_html);
+        }
+
+        function showIndex() {
+          $("#index").empty();
+          var inner_html = "";
+          inner_html += "<a href='index.html?user_id=" + user_id;
+          inner_html += "&email=" + email + "&password=" + password + "'";
+          inner_html += "style='font-weight: bold'>";
+          inner_html += "<img src='images/icons/newlogo.png' alt='LOGO' /></a>";
+
+          $("#index").append(inner_html);
+        }
+
+        function Logout() {
+          swal({
+            title: `確認要登出嗎`,
+            icon: "warning",
+            dangerMode: true,
+
+            buttons: {
+              Btn: false,
+              confirm: {
+                text: "確認",
+                visible: true,
+              },
+              cancel: {
+                text: "取消",
+                visible: true,
+              },
+            },
+          }).then((value) => {
+            if (value != null) {
+              user_id = null;
+              email = null;
+              password = null;
+              swal("您已成功登出", {
+                icon: "success",
+                buttons: {
+                  confirm: {
+                    text: "確定",
+                    value: true,
+                    visible: true,
+                    className: "btn-primary",
+                    closeModal: true,
+                  },
+                },
+              }).then((value) => {
+                if (value) {
+                  // 導向到新的頁面
+                  window.location.href = "index.html";
+                }
+              });
+            } else {
+              swal.close();
+            }
+          });
+        }
+      </script>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/waypoint/jquery.waypoints.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countterup/jquery.counterup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+  </body>
+</html>

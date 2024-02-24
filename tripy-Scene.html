@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>tripy</title>
+    <meta charset="UTF-8" />
+    <script src="statics/js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="statics/js/jquery-confirm.js"></script>
+    <script src="statics/js/big.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/MagnificPopup/magnific-popup.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--===============================================================================================-->
+  </head>
+  <body class="animsition">
+    <!-- Header -->
+    <header>
+      <!-- Header desktop -->
+      <nav class="container-header-desktop">
+        <div class="wrap-menu-desktop">
+          <div class="limiter-menu-desktop container">
+            <!-- Logo desktop -->
+            <div class="logo" id="index">
+              <a href="index.html"
+                ><img src="images/icons/newlogo.png" alt="LOGO"
+              /></a>
+            </div>
+
+            <!-- Menu desktop -->
+            <div class="menu-desktop">
+              <ul class="main-menu respon-sub-menu">
+                <li id="city"></li>
+
+                <li id="plan"></li>
+
+                <li id="FL"></li>
+
+                <li id="login">
+                  <a href="tripy-login.html" style="font-weight: bold">登入</a>
+                </li>
+                <li id="logout"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Header Mobile -->
+      <nav class="container-header-mobile">
+        <div class="wrap-header-mobile">
+          <!-- Logo moblie -->
+          <div class="logo-mobile">
+            <a href="index.html"
+              ><img src="images/icons/logo-01.png" alt="LOGO"
+            /></a>
+          </div>
+
+          <!-- Button show menu -->
+          <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="menu-mobile">
+          <ul class="top-bar-m p-l-20 p-tb-8">
+            <li>
+              <div class="t1-s-1 cl-5 p-tb-3">
+                <span class="fs-16 m-r-6">
+                  <i class="fa fa-home" aria-hidden="true"></i>
+                </span>
+                <span></span>
+              </div>
+            </li>
+
+            <li>
+              <div class="t1-s-1 cl-5 p-tb-3">
+                <span class="fs-16 m-r-6">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                </span>
+                <span></span>
+              </div>
+            </li>
+
+            <li>
+              <div class="t1-s-1 cl-5 p-tb-3">
+                <span class="fs-16 m-r-6">
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>
+                </span>
+                <span></span>
+              </div>
+            </li>
+
+            <li>
+              <div>
+                <a href="#" class="fs-16 cl-5 hov-link2 trans-02 m-r-15">
+                  <i class="fa fa-facebook-official"></i>
+                </a>
+
+                <a href="#" class="fs-16 cl-5 hov-link2 trans-02 m-r-15">
+                  <i class="fa fa-twitter"></i>
+                </a>
+
+                <a href="#" class="fs-16 cl-5 hov-link2 trans-02 m-r-15">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+
+                <a href="#" class="fs-16 cl-5 hov-link2 trans-02 m-r-15">
+                  <i class="fa fa-instagram"></i>
+                </a>
+
+                <a href="#" class="fs-16 cl-5 hov-link2 trans-02 m-r-15">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Title page -->
+    <section class="bg-img1" style="height: 500px; margin-top: -100px">
+      <img src="" id="bgi" />
+      <h2
+        id="title"
+        class="t1-b-1 text-uppercase cl-0 txt-center m-b-25"
+        style="
+          font-weight: bold;
+          position: absolute;
+          z-index: 2;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          margin: 0;
+        "
+      ></h2>
+    </section>
+    <section>
+      <!-- Content -->
+      <div class="bg-0 p-t-95 p-b-50">
+        <div class="p-rl-50 p-rl-15-sr1199">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-auto p-b-15" id="back">
+              <a
+                href="tripy-City.html"
+                class="size-a-1 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn1 trans-02 m-t-20"
+              >
+                返回
+                <i class="fa fa-long-arrow-left m-l-15"></i>
+              </a>
+            </div>
+
+            <div class="col-sm-10 col-md-4 col-lg-3 flex-s-c p-b-15">
+              <form class="flex-wr-c-c w-100" method="post" action="" id="form">
+                <input
+                  class="size-a-21 bg-none t1-s-5 cl-6 plh-6 bo-tbl-1 bcl-11 p-rl-20"
+                  type="text"
+                  name="search"
+                  placeholder="搜尋"
+                  id = "context"
+                />
+                <button class="size-a-22 fs-18 cl-0 bg-11 hov-btn1 trans-02">
+                  <i class="fa fa-search"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <div id="panel" class="row isotope-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SweetAlert的JS套件 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+      // 取得網址參數
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+      var id = url.searchParams.get("id");
+      var user_id = url.searchParams.get("user_id");
+      if (id == "" || id == "null") {
+        id = null;
+      }
+
+      if (user_id == "" || user_id == "null") {
+        user_id = null;
+      }
+      var email = url.searchParams.get("email");
+      if (email == "" || email == "null") {
+        email = null;
+      }
+      var password = url.searchParams.get("password");
+      if (password == "" || password == "null") {
+        password = null;
+      }
+
+      $(document).ready(function () {
+        getCitySceneData();
+        showCity();
+        showIndex();
+        showBack();
+        if (user_id != null && email != null && password != null) {
+          showPlan();
+          showFL();
+          showName();
+        }
+      });
+		$("#form").submit(function (e) {
+            e.preventDefault();
+            submit();
+	     });
+	
+          function submit() {
+            var context = $("#context").val();
+
+            if (context.trim() === "" || context.trim() === "搜尋" || context.trim()=== null) {
+              Swal.fire({
+                icon: "error",
+                title: "搜尋內容不能為空!",
+                confirmButtonText: "OKay",
+              });
+            } else {
+               // 發出POST的AJAX請求
+                $.ajax({
+                  type: "GET",
+                  url: "api/scene.do",
+                  data: "keyword=" + context,
+                  crossDomain: true,
+                  cache: false,
+                  dataType: "json",
+                  timeout: 5000,
+                  success: function (response) {
+                    if (response.status == 200) {
+                      $("#panel").html("");
+                      	var inner_html = "";	
+						if(response.response.row > 0){
+							$.each(response.response.data, function (k, v) {
+			              		inner_html += getSearch(v);
+				            });
+				
+				            $("#panel").append(inner_html);
+						}
+						else{
+							 $("#panel").text("查無搜尋結果");
+						}
+			           
+			            $("#title").text("搜尋結果");
+                    }
+                  },
+                  error: function () {
+                    alert("無法連線到伺服器！");
+                  },
+                });
+              }
+            }   
+      function getSearch(data){
+		  var table_html = "";
+	        table_html +=
+	          '<div class="col-sm-6 col-lg-4 p-b-45 isotope-item market-n">';
+	        table_html += '<div class="flex-col-s-c">';
+	        table_html += '<div class="w-full pos-relative wrap-pic-w m-b-16">';
+	        table_html +=
+	          '<img src="images/' + data.scene.Scene_info.name + '.jpg" alt="IMG" height= "280px">';
+	        table_html +=
+	          '<div class="s-full ab-t-l flex-col-c-c hov-1 p-tb-30 p-rl-15">';
+	        table_html +=
+	          '<a href="tripy-SceneInfo.html?city_id=' +
+	          data.city_id +
+	          "&user_id=" +
+	          user_id +
+	          "&scene_id=" +
+	          data.scene.Scene_info.id +
+	          "&email=" +
+	          email +
+	          "&password=" +
+	          password +
+	          '" class="size-a-15 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn2 trans-02 p-rl-10 hov-1-2">';
+	        table_html += "看評論";
+	        table_html += "</a>";
+	        table_html += "</div>";
+	        table_html += "</div>";
+	        table_html +=
+	          '<a href="tripy-SceneInfo.html?city_id=' +
+	          data.city_id +
+	          "&user_id="+user_id+"&scene_id=" +
+	          data.scene.Scene_info.id +
+	          "&email=" +
+	          email +
+	          "&password=" +
+	          '" class="t1-m-1 cl-3 hov-link2 trans-02">';
+	        table_html += data.scene.Scene_info.name;
+	        table_html += "</a>";
+	        table_html += "</div>";
+	        table_html += "</div>";
+	        return table_html;
+	  }      
+      function getCitySceneData() {
+        $.ajax({
+          type: "GET",
+          url: "api/city.do",
+          data: "id=" + id,
+          crossDomain: true,
+          cache: false,
+          dataType: "json",
+          timeout: 5000,
+          success: function (response) {
+            if (response.status == 200) {
+              updateHTML(response.response.data);
+            }
+          },
+          error: function () {
+            alert("無法連線到伺服器！");
+          },
+        });
+      }
+
+      function updateHTML(data) {
+        $("#title").html(data[0]["city_info"]["name"] + "旅遊指南");
+        $("#bgi").attr(
+          "src",
+          "images/" + data[0]["city_info"]["name"] + ".jpg"
+        );
+        $("#bgi").css({
+          "background-image":
+            'url("images/' + data[0]["city_info"]["name"] + '.jpg")',
+          "background-size": "cover",
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          "z-index": "1",
+        });
+        var inner_html = "";
+
+        $.each(data[0].scene_info, function (k, v) {
+          inner_html += updateOrderProductTable(v);
+        });
+
+        $("#panel").append(inner_html);
+      }
+
+      function updateOrderProductTable(data) {
+        var table_html = "";
+        table_html +=
+          '<div class="col-sm-6 col-lg-4 p-b-45 isotope-item market-n">';
+        table_html += '<div class="flex-col-s-c">';
+        table_html += '<div class="w-full pos-relative wrap-pic-w m-b-16">';
+        table_html +=
+          '<img src="images/' + data.name + '.jpg" alt="IMG" height= "280px">';
+        table_html +=
+          '<div class="s-full ab-t-l flex-col-c-c hov-1 p-tb-30 p-rl-15">';
+        table_html +=
+          '<a href="tripy-SceneInfo.html?city_id=' +
+          id +
+          "&user_id=" +
+          user_id +
+          "&scene_id=" +
+          data.id +
+          "&email=" +
+          email +
+          "&password=" +
+          password +
+          '" class="size-a-15 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn2 trans-02 p-rl-10 hov-1-2">';
+        table_html += "看評論";
+        table_html += "</a>";
+        table_html += "</div>";
+        table_html += "</div>";
+        table_html +=
+          '<a href="tripy-SceneInfo.html?city_id=' +
+          id +
+          "&user_id="+user_id+"&scene_id=" +
+          data.id +
+          "&email=" +
+          email +
+          "&password=" +
+          '" class="t1-m-1 cl-3 hov-link2 trans-02">';
+        table_html += data.name;
+        table_html += "</a>";
+        table_html += "</div>";
+        table_html += "</div>";
+        return table_html;
+      }
+
+      function showBack() {
+        $("#back").empty();
+        var inner_html = "";
+        inner_html +=
+          "<a href='tripy-City.html?user_id=" +
+          user_id +
+          "&email=" +
+          email +
+          "&password=" +
+          password +
+          "'";
+        inner_html +=
+          "class='size-a-1 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn1 trans-02 m-t-20'>返回";
+        inner_html += " <i class='fa fa-long-arrow-left m-l-15'></i></a>";
+        $("#back").append(inner_html);
+      }
+
+      function showCity() {
+        $("#city").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-City.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>景點</a>";
+
+        $("#city").append(inner_html);
+      }
+
+      function showPlan() {
+        $("#plan").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-StartPlanning.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>我的行程</a>";
+
+        $("#plan").append(inner_html);
+      }
+
+      function showFL() {
+        $("#FL").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-FavoriteList.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>我的收藏</a>";
+
+        $("#FL").append(inner_html);
+      }
+
+      function showName() {
+        $("#login").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-MemberDetail.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>會員資料</a>";
+
+        $("#logout").empty();
+        var logout_html = "";
+        logout_html +=
+          "<a href='#' onclick='Logout()' style='font-weight: bold'>登出</a> ";
+
+        $("#login").append(inner_html);
+        $("#logout").append(logout_html);
+      }
+
+      function showIndex() {
+        $("#index").empty();
+        var inner_html = "";
+        inner_html += "<a href='index.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>";
+        inner_html += "<img src='images/icons/newlogo.png' alt='LOGO' /></a>";
+
+        $("#index").append(inner_html);
+      }
+
+      function Logout() {
+        swal({
+          title: `確認要登出嗎`,
+          icon: "warning",
+          dangerMode: true,
+
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value != null) {
+            user_id = null;
+            email = null;
+            password = null;
+            swal("您已成功登出", {
+              icon: "success",
+              buttons: {
+                confirm: {
+                  text: "確定",
+                  value: true,
+                  visible: true,
+                  className: "btn-primary",
+                  closeModal: true,
+                },
+              },
+            }).then((value) => {
+              if (value) {
+                // 導向到新的頁面
+                window.location.href = "index.html";
+              }
+            });
+          } else {
+            swal.close();
+          }
+        });
+      }
+    </script>
+
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/waypoint/jquery.waypoints.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countterup/jquery.counterup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>tripy</title>
+	<meta charset="UTF-8">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+	<script src="statics/js/jquery-3.4.1.min.js"></script>
+  	<script src="statics/js/jquery-confirm.js"></script>
+  	<script src="statics/js/big.min.js"></script>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body class="animsition">
+
+	<!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<nav class="container-header-desktop">
+			<div class="wrap-menu-desktop">
+				<div class="limiter-menu-desktop container">					
+					<!-- Logo desktop -->		
+					<div class="logo">
+						<a href="index-admin.html"><img src="images/icons/newlogo.png" alt="LOGO"></a>
+					</div>
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu respon-sub-menu">
+							<li>
+								<a href="tripy-SeeAllScene.html" style="font-weight: bold;">所有景點</a>
+								
+							</li>
+							<li>
+								<a href="tripy-AddNewScene.html" style="font-weight: bold;">新增景點</a>
+								
+							</li>
+							<li>
+								<a href="tripy-SeeAllMember.html" style="font-weight: bold;">所有會員</a>
+								
+							</li>
+							<li>
+								<a href="tripy-SeeAllAdmin.html" style="font-weight: bold;">所有管理員</a>
+								
+							</li>
+							<li id="logout">
+                			</li>
+						</ul>
+					</div>					
+				</div>
+			</div>	
+		</nav>
+        <style>
+            .borderOne{
+                border-radius: 30px;
+            }
+            .size-a-104 {
+            min-width: 100px;
+            height: 30px;
+            }
+
+        </style>
+        
+	</header>
+
+		<!-- Content -->
+        <div class="bg-0 p-t-85 p-b-65">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    
+                    <div class="col-auto flex-col-c-c p-b-50 "style="position: absolute; left: 660px;"> 
+                        <h3 class="t1-b-1 cl-3 txt-center m-b-11">
+                            新增景點
+                        </h3>
+                        <div class="size-a-2 bg-3"></div>
+                    </div>
+
+                </div>
+                
+    
+                <div class="row justify-content-center">
+                    <div class="col-sm-10 col-md-6 p-b-30" id="message">
+						<img id="image" class="max-s-full"  alt="IMG">
+						
+						<form id="upload_form" enctype="multipart/form-data">
+							新增圖片: <input type="file" name="photo" id="fileInput" /><br>
+							<input type="button" value="Upload" onclick="uploadFile()" />
+						</form>
+					</div>
+					
+					<img id="uploadedImage"></img>
+					<script>
+						function uploadFile() {
+							var formData = new FormData();
+							formData.append("photo", $("#fileInput")[0].files[0]);
+
+						
+							$.ajax({
+								url: "upload.do",
+								type: "POST",
+								data: formData,
+								processData: false,
+								contentType: false,
+								success: function(response) {
+									Swal.fire({
+				                      icon: "success",
+				                      title: "成功!",
+				                      text: "",
+				                      confirmButtonText: "Great",
+				                    })
+
+									console.log("檔案名稱:",response);
+
+									var name = String(decodeURIComponent(response));
+									console.log("檔案名稱:",name);
+									setTimeout(function () {
+					                setimage(name);
+					            }, 5000);
+					        },
+					        error: function (error) {
+					            $("#message").html("Error uploading file.");
+					        },
+					    });
+					}
+					
+					function setimage(name) {
+					    $("#image").attr("src", "images/" + name);
+					    $("#image").css({
+					        "background-image": 'url("images/' + name + '")',
+					        "background-size": "cover",
+					        width: "100%",
+					        height: "100%",
+					        position: "relative",
+					        "z-index": "1",
+					    });
+					}
+					</script>
+                    
+    
+                    <div class="col-sm-10 col-md-6 p-b-30">
+                        <div class="p-l-15 flex-col-s-s p-l-0-sr767">
+							<div style="align-content: center; justify-content: center; width: 100%; display: flex;margin-bottom:15px">					
+	                            <a id="name" href="javascript:void(0);" onclick="addName()" class="t1-m-5 cl-3 text-uppercase m-b-18 js-name1 hov-link2 trans-02 bold-chinese-text">新增景點名稱</a>
+							</div>
+                           <ul style="width: 100%;"> 
+	                            <li class="bo-b-1 bcl-14 m-b-18" style="margin-bottom:30px">
+	                                <a href="javascript:void(0);" onclick="addAddress()" class="flex-wr-sb-c t1-s-5 cl-5 hov-link2 trans-02 p-tb-3 bold-chinese-text">
+	                                    <span class="size-w-0">
+	                                        <span class="fs-14 cl-5">
+	                                            <i class="fa fa-map-marker"></i>
+	                                        </span>
+	                                        <span id="address">新增地址</span>
+	                                    </span>
+	                                </a>
+	                            </li>
+	                            
+	    
+	                            <li class="bo-b-1 bcl-14 m-b-18"style="margin-bottom:30px">
+	                                <a href="javascript:void(0);" onclick="addOpentime()" class="flex-wr-sb-c t1-s-5 cl-5 hov-link2 trans-02 p-tb-3 bold-chinese-text">
+	                                    <span class="size-w-0">
+	                                        <span class="fs-14 cl-5">
+	                                            <i class="fa fa-clock-o"></i>
+	                                        </span>
+	                                        <span id="opentime">新增開放時間</span>
+	                                    </span>
+	                                </a>
+	                            </li>
+	
+	                            <li class="bo-b-1 bcl-14 m-b-18"style="margin-bottom:30px">
+	                                <a href="javascript:void(0);" onclick="addPhone()" class="flex-wr-sb-c t1-s-5 cl-5 hov-link2 trans-02 p-tb-3 bold-chinese-text">
+	                                    <span class="size-w-0">
+	                                        <span class="fs-14 cl-5">
+	                                            <i class="fa fa-phone"></i>
+	                                        </span>
+	                                        <span id="phone">新增電話號碼</span>
+	                                    </span>
+	                                </a>
+	                            </li>
+	
+	                            <li class="bo-b-1 bcl-14 m-b-18"style="margin-bottom:30px">
+	                                <a href="javascript:void(0);" onclick="addDetail()" class="flex-wr-sb-c t1-s-5 cl-5 hov-link2 trans-02 p-tb-3 bold-chinese-text">
+	                                    <span class="size-w-0">
+	                                        <span class="fs-14 cl-5">
+	                                            <i class="fa fa-columns"></i>
+	                                        </span>
+	                                        <span id="detail">新增簡介</span>
+	                                    </span>
+	                                </a>
+	                            </li>
+	                            <li  class="bo-b-1 bcl-14 m-b-18" style="margin-bottom:30px;">									
+			                      <div class="rs1-select2 bor9 bg0" style=" margin-left: -20px;">								  
+			                          <select class="js-select2 size-a-102 bo-all-1 bcl-11 t1-m-2 plh-6 p-rl-20 w-full-sr575 m-tb-10 " id="city" name="city">										  
+										  <option value="0">選擇城市...</option>
+			                              <option value="1">雙北</option>
+			                              <option value="2">桃園</option>
+			                              <option value="3">台中</option>
+			                              <option value="4">南投</option>
+			                              <option value="5">高雄</option>
+			                              <option value="6">花蓮</option>
+			                              <option value="7">台東</option>
+			                          </select>
+			                          <div class="dropDownSelect2"></div>
+			                      </div>
+			                  </li>
+    						</ul>
+    						<div style="align-content: center; justify-content: center; width: 100%; display: flex;">
+	                            <button id="submit" class="m-t-40 size-a-26 flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn1 trans-02 js-addcart1 bold-chinese-text">
+	                                確認新增
+	                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+					
+				
+							
+					var url_string = window.location.href;
+                	var url = new URL(url_string);
+					async function addName(){
+						const inputValue = $("#name").text();
+						const { value: name } = await Swal.fire({
+						  title: "請輸入景點名稱...",
+						  input: "text",
+						  inputLabel: "景點名稱",
+						  inputPlaceholder:  $("#name").text(),
+						  showCancelButton: true,
+						  inputValidator: (value) => {
+						    if (!value) {
+						      return "You need to give it a name!";
+						    }
+						  }
+						});
+						if (name) {
+						  $("#name").html(name); 
+						}						
+					}
+					async function addAddress(){
+						const inputValue = $("#address").text();
+						const { value: address } = await Swal.fire({
+						  title: "請輸入景點地址...",
+						  input: "text",
+						  inputLabel: "景點地址",
+						  inputPlaceholder:  $("#address").text(),
+						  showCancelButton: true,
+						  inputValidator: (value) => {
+						    if (!value) {
+						      return "You need to give it a address!";
+						    }
+						  }
+						});
+						if (address) {
+						  $("#address").html(address); 
+						}
+					}
+					async function addPhone(){
+						const inputValue = $("#phone").text();
+						const { value: phone } = await Swal.fire({
+						  title: "請輸入景點電話...",
+						  input: "text",
+						  inputLabel: "景點電話",
+						  inputPlaceholder:  $("#phone").text(),
+						  showCancelButton: true,
+						  inputValidator: (value) => {
+						    if (!value) {
+						      return "You need to give it a phone number!";
+						    }
+						  }
+						});
+						if (phone) {
+						  $("#phone").html(phone); 
+						}
+					}
+					async function addOpentime(){
+						const inputValue = $("#opentime").text();
+						const { value: opentime } = await Swal.fire({
+						  title: "請輸入景點營業時間...",
+						  input: "text",
+						  inputLabel: "景點營業時間",
+						  inputPlaceholder:  $("#opentime").text(),
+						  showCancelButton: true,
+						  inputValidator: (value) => {
+						    if (!value) {
+						      return "You need to give it opentime!";
+						    }
+						  }
+						});
+						if (opentime) {
+						  $("#opentime").html(opentime); 
+						}
+					}
+					async function addDetail(){
+						var inputValue = $("#detail").text();
+						const { value: detail } = await Swal.fire({
+						  title: "請描述景點...",
+						  input: "textarea",
+						  inputLabel: "景點簡介",
+						  inputPlaceholder: $("#detail").text(),
+						  showCancelButton: true,
+						  inputValidator: (value) => {
+						    if (!value) {
+						      return "You need to give it some detail!";
+						    }
+						  }
+						});
+						if (detail) {
+					  		$("#detail").html(detail); 					
+						}															
+					}
+					$('#submit').click(function() {
+						Swal.fire({
+						  icon: "question",
+						  title: "Are You Sure?",
+						  text: "確定要新增此景點嗎?",
+						  confirmButtonText: "Yes",
+						  showCancelButton: true,
+						  cancelButtonText: "No",
+						  		                  
+						}).then((result) => {
+					   		if (result.isConfirmed) {
+					         	submit();
+					    	}
+						});		                
+	                });
+	                function submit() {
+		                    var name = $('#name').text();
+		                    var address = $('#address').text();
+		                    var phone = $('#phone').text();
+		                    var opentime = $('#opentime').text();
+		                    var detail = $('#detail').text();
+							var city_id = $("#city option:selected").attr('value')
+		                    if (name == "新增景點名稱" || address== "新增地址" || phone == "新增電話號碼"|| opentime == "新增開放時間" || detail == "新增簡介" || city_id == "0") {
+								Swal.fire({
+								  icon: "error",
+								  title: "Oops...",
+								  text: "景點各項內容不能為空!",
+								  confirmButtonText: "OKay",	
+								});
+		                    }  
+		                    else if(detail.length > 200){
+								Swal.fire({
+								  icon: "error",
+								  title: "Oops...",
+								  text: "景點簡介過長!",
+								  confirmButtonText: "OKay",	
+								});
+							}        
+		                    else {
+													
+		                        // 將資料組成JSON格式
+		                        var data_object = {
+								    "city": $("#city option:selected").text(),
+								    "detail": $("#detail").text(),
+								    "address": $("#address").text(),
+								    "phone": $("#phone").text(),
+								    "opentime": $("#opentime").text(),
+								    "name": $("#name").text()
+								};
+		
+		                        // 將JSON格式轉換成字串
+		                        var data_string = JSON.stringify(data_object);
+		
+		                        // 發出POST的AJAX請求
+		                        $.ajax({
+		                                type: "POST",
+		                                url: "api/scene.do",
+		                                data: data_string,
+		                                crossDomain: true,
+		                                cache: false,
+		                                dataType: 'json',
+		                                timeout: 5000,
+		                                success: function (response) {
+		                                    if(response.status == 200){
+												swal.fire({
+								                    icon: "success",
+								                    title: "成功!",
+								  					text: response.message,
+								  					confirmButtonText: "OKay",
+								                }).then((result) => {
+								                    if (result) {
+								                      // 導向到新的頁面
+								                     window.location.href = url;
+								                  	} 
+									            });
+		                                    }
+		                                    else if(response.status == 400){
+												swal.fire({
+								                    icon: "warning",
+								                    title: "失敗",
+								  					text: response.message,
+								  					confirmButtonText: "Oh No~",
+								                }).then((result) => {
+								                    if (result) {
+								                      // 導向到新的頁面
+								                     window.location.href = url;
+								                  	} 
+								                });
+											 }    
+		                                },
+		                                error: function () {
+		                                    alert("無法連線到伺服器！");
+		                                }		                     
+	                    		});
+		                    }
+		                }
+		//logout
+		$("#logout").empty();
+        var logout_html = "";
+         logout_html +=
+          "<a href='#' onclick='Logout()' style='font-weight: bold'>登出</a> ";
+
+        $("#logout").append(logout_html);
+        
+        
+      function Logout() {
+        swal.fire({
+          title: `確認要登出嗎`,
+          icon: "warning",
+          dangerMode: true,
+
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value != null) {
+            user_id = null;
+            email = null;
+            password = null;
+            swal.fire("您已成功登出", {
+              icon: "success",
+              buttons: {
+                confirm: {
+                  text: "確定",
+                  value: true,
+                  visible: true,
+                  className: "btn-primary",
+                  closeModal: true,
+                },
+              },
+            }).then((value) => {
+              if (value) {
+                // 導向到新的頁面
+                window.location.href = "index.html";
+              }
+            });
+          } else {
+            swal.close();
+          }
+        });
+      }
+      /*
+						function readURL(input){
+
+							if(input.files && input.files[0]){
+ 								var reader = new FileReader();
+  								reader.onload = function (e) {
+	 								$("#preview_uploadImg").attr('src', e.target.result);
+  								}
+  								reader.readAsDataURL(input.files[0]);
+								console.log(input.files[0]);
+								console.error(input.files[0]);
+							}
+						}
+						*/
+				</script>
+            </div>
+        </div>
+	
+	<!-- Footer -->
+	<footer>
+		
+	</footer>
+
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/parallax100/parallax100.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/waypoint/jquery.waypoints.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countterup/jquery.counterup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/slick/slick.min.js"></script>
+	<script src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>

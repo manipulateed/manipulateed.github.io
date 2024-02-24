@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>檢視會員介面</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/revolution/css/layers.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/revolution/css/navigation.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/revolution/css/settings.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/MagnificPopup/magnific-popup.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--===============================================================================================-->
+  </head>
+  <body class="animsition">
+    <!-- Header -->
+    <header>
+      <!-- Header desktop -->
+      <nav class="container-header-desktop">
+        <div class="wrap-menu-desktop">
+          <div class="limiter-menu-desktop container">
+            <!-- Logo desktop -->
+            <div class="logo" id="index">
+              <a href="index.html"
+                ><img src="images/icons/newlogo.png" alt="LOGO"
+              /></a>
+            </div>
+
+            <!-- Menu desktop -->
+            <div class="menu-desktop">
+              <ul class="main-menu respon-sub-menu">
+                <li id="city"></li>
+                <li id="plan"></li>
+                <li id="FL"></li>
+                <li id="login"></li>
+                <li id="logout"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <style>
+        .kit-underline1 {
+          position: relative;
+        }
+
+        .kit-underline1::after {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #ddd;
+          border-left: 70px solid #05233a;
+        }
+
+        .size-a-105 {
+          width: 100%;
+          height: 2px;
+        }
+      </style>
+    </header>
+
+    <section class="bg-0 p-b-40">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-sm-10 col-md-4 col-lg-10 p-b-30">
+            <!-- 清單div -->
+            <div id="Try">
+              <div class="row justify-content-between align-items-center">
+                <div
+                  class="col-auto flex-col-c-c p-b-50"
+                  style="position: absolute; left: 360px"
+                >
+                  <h3 class="t1-b-1 cl-3 txt-center m-b-11">我的收藏清單</h3>
+                  <div class="size-a-2 bg-3"></div>
+                </div>
+                <div class="col-auto p-b-50" name="back">
+                  <button
+                    class="size-a-1 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn1 trans-02 m-t-20"
+                    onclick="AddCollecList()"
+                  >
+                    <i class="fa fa-plus m-r-2"> 新增收藏清單</i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 新增清單 -->
+              <div id="collectlist" class="container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .CollectList {
+        border-radius: 15px;
+        background: #e7dbc7;
+        color: black;
+        padding: 20px;
+        width: 150px;
+        height: 120px;
+        text-align: center;
+        align-items: center;
+        float: left;
+        margin-right: 15px;
+        margin-top: 15px;
+      }
+
+      #CL {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="vendor/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="js/revo-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/waypoint/jquery.waypoints.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countterup/jquery.counterup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+    <!--===============================================================================================-->
+    <!-- SweetAlert的JS套件 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+      var user_id = url.searchParams.get("user_id");
+      if (user_id == "") {
+        user_id = null;
+      }
+      var email = url.searchParams.get("email");
+      var password = url.searchParams.get("password");
+      // 將user_id變成字串
+      var user_id_str = user_id.toString();
+
+      $(document).ready(function () {
+        getAllCL(user_id);
+        showCity();
+        showIndex();
+        showPlan();
+        showFL();
+        showName();
+      });
+
+      //新增清單
+      function createCList() {
+        AddCollecList(user_id);
+      }
+
+      function AddCollecList(user_id) {
+        swal("新增清單名稱", {
+          content: {
+            element: "input",
+          },
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value !== null) {
+            // 將資料組成JSON格式
+            var data_object = {
+              name: value,
+              user_id: user_id_str,
+            };
+
+            // 將JSON格式轉換成字串
+            var data_string = JSON.stringify(data_object);
+            // 發出POST的AJAX請求
+            $.ajax({
+              type: "POST",
+              url: "http://localhost:8090/NCU_MIS_SA/api/Collect_List.do",
+              data: data_string,
+              crossDomain: true,
+              cache: false,
+              dataType: "json",
+              timeout: 5000,
+              success: function (response) {
+                if (response.status == 200) {
+                  swal("已成功新增收藏清單", {
+                    icon: "success",
+                    buttons: {
+                      confirm: {
+                        text: "確定",
+                        value: true,
+                        visible: true,
+                        className: "btn-primary",
+                        closeModal: true,
+                      },
+                    },
+                  }).then((value) => {
+                    if (value) {
+                      // 導向到新的頁面
+                      getAllCL(user_id);
+                    }
+                  });
+                  updateSQLTable(response.response);
+                } else {
+                  swal(response.message);
+                }
+                console.log(response);
+              },
+              error: function () {
+                swal("新增失敗！");
+              },
+            });
+          } else {
+            // 使用者按下取消按鈕
+            swal.close();
+          }
+        });
+      }
+      //刪除清單
+      function deleteCList(id) {
+        swal({
+          title: `確認要刪除該收藏清單嗎`,
+          icon: "warning",
+          dangerMode: true,
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value != null) {
+            console.log("You pressed OK!");
+            var request = { id: id };
+            var data_string = JSON.stringify(request); //把id變string
+            $.ajax({
+              type: "DELETE",
+              url: "http://localhost:8090/NCU_MIS_SA/api/Collect_List.do",
+              crossDomain: true,
+              data: data_string,
+              cache: false,
+              dataType: "json",
+              timeout: 5000,
+              success: function (response) {
+                //跟後端連線成功
+                if (response.status == 200) {
+                  console.log(response.response.data);
+                  swal(`已成功刪除`);
+                  getAllCL(id);
+                }
+                console.log(response);
+              },
+              error: function () {
+                swal(`無法連到伺服器`);
+              },
+            });
+          } else {
+            console.log("You pressed cancle!");
+            swal.close();
+          }
+        });
+      }
+      //編輯清單
+      function editCList(id) {
+        swal("編輯收藏清單名稱", {
+          content: {
+            element: "input",
+          },
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value !== null) {
+            if (value !== "" && value !== null) {
+              updateName(id, value);
+            } else {
+              swal("您未輸入任何文字");
+            }
+          } else {
+            swal.close();
+          }
+        });
+      }
+
+      function updateName(id, value) {
+        //把取到的名字存成變數
+        var name = value;
+
+        //將資料組成JSON格式
+        var data_object = {
+          id: id,
+          name: name,
+          user_id: user_id,
+        };
+
+        //將JSON格式轉換成字串
+        var data_string = JSON.stringify(data_object);
+
+        //發出POST的PUT請求
+        $.ajax({
+          type: "PUT",
+          url: "http://localhost:8090/NCU_MIS_SA/api/Collect_List.do",
+          data: data_string,
+          crossDomain: true,
+          cache: false,
+          dataType: "json",
+          timeout: 5000,
+          success: function (response) {
+            swal("已成功更改清單名稱");
+
+            if (response.status == 200) {
+              //successful
+              getAllCL(id); //253
+            }
+          },
+          error: function () {
+            //unsuccesful
+            swal("編輯失敗！此清單名稱已存在");
+          },
+        });
+      }
+      function getAllCL(id) {
+        // 發出POST的GET請求取得所有會員列表
+        $.ajax({
+          type: "GET", //注意！！
+          url: "http://localhost:8090/NCU_MIS_SA/api/Collect_List.do",
+          crossDomain: true,
+          cache: false,
+          dataType: "json",
+          data: { user_id: user_id },
+          timeout: 10000,
+          success: function (response) {
+            if (response.status == 200) {
+              console.log(response.response.data);
+              updateTable(response.response.data);
+            }
+            console.log(response);
+          },
+          error: function () {
+            swal("無法連線到伺服器！");
+          },
+        });
+      }
+
+      // 更新收藏清單表格
+      function updateTable(data) {
+        $("#collectlist").empty();
+        var collectlist_html = "";
+        $.each(data, function (index, value) {
+          collectlist_html +=
+            "<div class='CollectList'>" +
+            "<b>" +
+            "<a href='tripy-FavoriteList-detail.html?CL_id=" +
+            value["id"] +
+            "&user_id=" +
+            user_id +
+            "&email=" +
+            email +
+            "&password=" +
+            password +
+            "' class='collectionlist' style='color: black'>" +
+            value["name"] +
+            "</a>" +
+            "</b>" +
+            "<br />" +
+            "<br />" +
+            "<a href='javascript: editCList(" +
+            value["id"] +
+            ");'><i class='fs-14 cl-7 fa fa-pencil m-r-2'> 編輯</i></a>" +
+            " | " +
+            "<a href='javascript: deleteCList(" +
+            value["id"] +
+            ");'><i class='fs-14 cl-7 fa fa-trash m-r-2'> 刪除</i></a>" +
+            " </div>";
+        });
+
+        $("#collectlist").append(collectlist_html);
+      }
+
+      function showCity() {
+        $("#city").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-City.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>景點</a>";
+
+        $("#city").append(inner_html);
+      }
+
+      function showPlan() {
+        $("#plan").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-StartPlanning.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>我的行程</a>";
+
+        $("#plan").append(inner_html);
+      }
+
+      function showFL() {
+        $("#FL").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-FavoriteList.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>我的收藏</a>";
+
+        $("#FL").append(inner_html);
+      }
+
+      function showName() {
+        $("#login").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-MemberDetail.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>會員資料</a>";
+
+        $("#logout").empty();
+        var logout_html = "";
+        logout_html +=
+          "<a href='#' onclick='Logout()' style='font-weight: bold'>登出</a> ";
+
+        $("#login").append(inner_html);
+        $("#logout").append(logout_html);
+      }
+
+      function showIndex() {
+        $("#index").empty();
+        var inner_html = "";
+        inner_html += "<a href='index.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>";
+        inner_html += "<img src='images/icons/newlogo.png' alt='LOGO' /></a>";
+
+        $("#index").append(inner_html);
+      }
+
+      function Logout() {
+        swal({
+          title: `確認要登出嗎`,
+          icon: "warning",
+          dangerMode: true,
+
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value != null) {
+            user_id = null;
+            email = null;
+            password = null;
+            swal("您已成功登出", {
+              icon: "success",
+              buttons: {
+                confirm: {
+                  text: "確定",
+                  value: true,
+                  visible: true,
+                  className: "btn-primary",
+                  closeModal: true,
+                },
+              },
+            }).then((value) => {
+              if (value) {
+                // 導向到新的頁面
+                window.location.href = "index.html";
+              }
+            });
+          } else {
+            swal.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,497 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>tripy</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="statics/js/jquery-3.4.1.min.js"></script>
+    <script src="statics/js/jquery-confirm.js"></script>
+    <script src="statics/js/big.min.js"></script>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/revolution/css/layers.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/revolution/css/navigation.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/revolution/css/settings.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/MagnificPopup/magnific-popup.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--===============================================================================================-->
+  </head>
+  <body class="animsition">
+    <!-- Header -->
+    <header>
+      <!-- Header desktop -->
+      <nav class="container-header-desktop">
+        <div class="wrap-menu-desktop">
+          <div class="limiter-menu-desktop container">
+            <!-- Logo desktop -->
+            <div class="logo" id="index">
+              <a href="index.html"
+                ><img src="images/icons/newlogo.png" alt="LOGO"
+              /></a>
+            </div>
+
+            <!-- Menu desktop -->
+            <div class="menu-desktop">
+              <ul class="main-menu respon-sub-menu">
+                <li id="city">
+                  <!-- <a href="tripy-City.html" style="font-weight: bold">景點</a> -->
+                </li>
+
+                <li id="plan">
+                  <!-- <a
+                    href="tripy-StartPlanning.html?user_id=1"
+                    style="font-weight: bold"
+                    >觀光行程</a
+                  > -->
+                </li>
+
+                <li id="FL">
+                  <!-- <a href="tripy-FavoriteList.html" style="font-weight: bold"
+                    >我的收藏</a
+                  > -->
+                </li>
+
+                <li id="login">
+                  <a href="tripy-login.html" style="font-weight: bold">登入</a>
+                </li>
+
+                <li id="logout">
+                  <!-- <button onclick="Logout()" style="font-weight: bold">
+                    登出
+                  </button> -->
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <style>
+        .bold-chinese-text {
+          font-family: "微軟正黑體", sans-serif;
+          font-weight: bold;
+        }
+      </style>
+    </header>
+
+    <!-- Slide -->
+    <section class="slider">
+      <div class="rev_slider_wrapper fullwidthbanner-container">
+        <div
+          id="rev_slider_1"
+          class="rev_slider fullwidthabanner"
+          data-version="5.4.5"
+          style="display: none"
+        >
+          <ul>
+            <!-- Slide 1 -->
+            <li data-transition="slidingoverlayhorizontal">
+              <img
+                src="images/trip1.webp"
+                alt="IMG-SLIDE"
+                class="rev-slidebg"
+              />
+
+              <h2
+                class="tp-caption tp-resizeme caption-1 text-uppercase"
+                data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:left;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                data-visibility="['on', 'on', 'on', 'on']"
+                data-fontsize="['48', '48', '48', '38']"
+                data-lineheight="['58', '58', '58', '58']"
+                data-color="['#FFF']"
+                data-textAlign="['center', 'center', 'center', 'center']"
+                data-x="['center']"
+                data-y="['center']"
+                data-hoffset="['0', '0', '0', '0']"
+                data-voffset="['-83', '-83', '-83', '-93']"
+                data-width="['1200','992','768','480']"
+                data-height="['auto', 'auto', 'auto', 'auto']"
+                data-whitespace="['normal']"
+                data-paddingtop="[0, 0, 0, 0]"
+                data-paddingright="[15, 15, 15, 15]"
+                data-paddingbottom="[0, 0, 0, 0]"
+                data-paddingleft="[15, 15, 15, 15]"
+                data-basealign="slide"
+                data-responsive_offset="off"
+              >
+                Welcome to tripy
+              </h2>
+
+              <p
+                class="tp-caption tp-resizeme caption-2 bold-chinese-text"
+                data-frames='[{"delay":1500,"speed":1500,"frame":"0","from":"x:right;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                data-visibility="['on', 'on', 'on', 'on']"
+                data-fontsize="['30', '30', '30', '25']"
+                data-lineheight="['39', '39', '39', '39']"
+                data-color="['#FFF']"
+                data-textAlign="['center', 'center', 'center', 'center']"
+                data-x="['center']"
+                data-y="['center']"
+                data-hoffset="['0', '0', '0', '0']"
+                data-voffset="['-13', '-13', '-13', '-13']"
+                data-width="['1200','992','768','480']"
+                data-height="['auto', 'auto', 'auto', 'auto']"
+                data-whitespace="['normal']"
+                data-paddingtop="[0, 0, 0, 0]"
+                data-paddingright="[15, 15, 15, 15]"
+                data-paddingbottom="[0, 0, 0, 0]"
+                data-paddingleft="[15, 15, 15, 15]"
+                data-basealign="slide"
+                data-responsive_offset="off"
+              >
+                讓你為旅遊輕鬆做準備
+              </p>
+            </li>
+
+            <!-- Slide 2 -->
+            <li data-transition="slidingoverlayvertical">
+              <img
+                src="images/trip2.webp"
+                alt="IMG-SLIDE"
+                class="rev-slidebg"
+              />
+
+              <h2
+                class="tp-caption tp-resizeme caption-1 text-uppercase"
+                data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"y:top;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                data-visibility="['on', 'on', 'on', 'on']"
+                data-fontsize="['48', '48', '48', '38']"
+                data-lineheight="['58', '58', '58', '58']"
+                data-color="['#FFF']"
+                data-textAlign="['center', 'center', 'center', 'center']"
+                data-x="['center']"
+                data-y="['center']"
+                data-hoffset="['0', '0', '0', '0']"
+                data-voffset="['-83', '-83', '-83', '-93']"
+                data-width="['1200','992','768','480']"
+                data-height="['auto', 'auto', 'auto', 'auto']"
+                data-whitespace="['normal']"
+                data-paddingtop="[0, 0, 0, 0]"
+                data-paddingright="[15, 15, 15, 15]"
+                data-paddingbottom="[0, 0, 0, 0]"
+                data-paddingleft="[15, 15, 15, 15]"
+                data-basealign="slide"
+                data-responsive_offset="off"
+              >
+                Welcome to tripy
+              </h2>
+
+              <p
+                class="tp-caption tp-resizeme caption-2 bold-chinese-text"
+                data-frames='[{"delay":1500,"speed":1500,"frame":"0","from":"y:bottom;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                data-visibility="['on', 'on', 'on', 'on']"
+                data-fontsize="['30', '30', '30', '25']"
+                data-lineheight="['39', '39', '39', '39']"
+                data-color="['#FFF']"
+                data-textAlign="['center', 'center', 'center', 'center']"
+                data-x="['center']"
+                data-y="['center']"
+                data-hoffset="['0', '0', '0', '0']"
+                data-voffset="['-13', '-13', '-13', '-13']"
+                data-width="['1200','992','768','480']"
+                data-height="['auto', 'auto', 'auto', 'auto']"
+                data-whitespace="['normal']"
+                data-paddingtop="[0, 0, 0, 0]"
+                data-paddingright="[15, 15, 15, 15]"
+                data-paddingbottom="[0, 0, 0, 0]"
+                data-paddingleft="[15, 15, 15, 15]"
+                data-basealign="slide"
+                data-responsive_offset="off"
+              >
+                規劃 • 旅遊 • 分享
+              </p>
+            </li>
+
+            <!-- Slide 3 -->
+            <li data-transition="boxslide">
+              <img
+                src="images/trip3.webp"
+                alt="IMG-SLIDE"
+                class="rev-slidebg"
+              />
+
+              <h2
+                class="tp-caption tp-resizeme caption-1 text-uppercase"
+                data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:-500px;skX:85px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                data-visibility="['on', 'on', 'on', 'on']"
+                data-fontsize="['48', '48', '48', '38']"
+                data-lineheight="['58', '58', '58', '58']"
+                data-color="['#FFF']"
+                data-textAlign="['center', 'center', 'center', 'center']"
+                data-x="['center']"
+                data-y="['center']"
+                data-hoffset="['0', '0', '0', '0']"
+                data-voffset="['-83', '-83', '-83', '-93']"
+                data-width="['1200','992','768','480']"
+                data-height="['auto', 'auto', 'auto', 'auto']"
+                data-whitespace="['normal']"
+                data-paddingtop="[0, 0, 0, 0]"
+                data-paddingright="[15, 15, 15, 15]"
+                data-paddingbottom="[0, 0, 0, 0]"
+                data-paddingleft="[15, 15, 15, 15]"
+                data-basealign="slide"
+                data-responsive_offset="off"
+              >
+                Welcome to tripy
+              </h2>
+
+              <p
+                class="tp-caption tp-resizeme caption-2 bold-chinese-text"
+                data-frames='[{"delay":1500,"speed":1500,"frame":"0","from":"x:500px;skX:-85px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                data-visibility="['on', 'on', 'on', 'on']"
+                data-fontsize="['30', '30', '30', '25']"
+                data-lineheight="['39', '39', '39', '39']"
+                data-color="['#FFF']"
+                data-textAlign="['center', 'center', 'center', 'center']"
+                data-x="['center']"
+                data-y="['center']"
+                data-hoffset="['0', '0', '0', '0']"
+                data-voffset="['-13', '-13', '-13', '-13']"
+                data-width="['1200','992','768','480']"
+                data-height="['auto', 'auto', 'auto', 'auto']"
+                data-whitespace="['normal']"
+                data-paddingtop="[0, 0, 0, 0]"
+                data-paddingright="[15, 15, 15, 15]"
+                data-paddingbottom="[0, 0, 0, 0]"
+                data-paddingleft="[15, 15, 15, 15]"
+                data-basealign="slide"
+                data-responsive_offset="off"
+              >
+                立即體驗行程規劃的樂趣
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!--===============================================================================================-->
+
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="vendor/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="js/revo-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/waypoint/jquery.waypoints.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countterup/jquery.counterup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+    <!--===============================================================================================-->
+
+    <!-- SweetAlert的JS套件 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+
+      var user_id = url.searchParams.get("user_id");
+      if (user_id == "" || user_id == "null") {
+        user_id = null;
+      }
+      var email = url.searchParams.get("email");
+      if (email == "" || email == "null") {
+        email = null;
+      }
+      var password = url.searchParams.get("password");
+      if (password == "" || password == "null") {
+        password = null;
+      }
+
+      $(document).ready(function () {
+        showCity();
+        showIndex();
+        if (user_id != null && email != null && password != null) {
+          showPlan();
+          showFL();
+          showName();
+        }
+      });
+
+      function showCity() {
+        $("#city").empty();
+        var inner_html = "";
+        inner_html += inner_html +=
+          "<a href='tripy-City.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>景點</a>";
+
+        $("#city").append(inner_html);
+      }
+
+      function showPlan() {
+        $("#plan").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-StartPlanning.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>我的行程</a>";
+
+        $("#plan").append(inner_html);
+      }
+
+      function showFL() {
+        $("#FL").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-FavoriteList.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>我的收藏</a>";
+
+        $("#FL").append(inner_html);
+      }
+
+      function showName() {
+        $("#login").empty();
+        var inner_html = "";
+        inner_html += "<a href='tripy-MemberDetail.html?user_id=" + user_id;
+        inner_html += "&email=" + email + "&password=" + password + "'";
+        inner_html += "style='font-weight: bold'>會員資料</a>";
+
+        $("#logout").empty();
+        var logout_html = "";
+        logout_html +=
+          "<a href='#' onclick='Logout()' style='font-weight: bold'>登出</a> ";
+
+        $("#login").append(inner_html);
+        $("#logout").append(logout_html);
+      }
+
+      function showIndex() {
+        $("#index").empty();
+        var inner_html = "";
+        inner_html +=
+          "<a href='javascript:void(0);' onclick='reloadIndex()' style='font-weight: bold'>";
+        inner_html += "<img src='images/icons/newlogo.png' alt='LOGO' /></a>";
+
+        $("#index").append(inner_html);
+      }
+
+      function reloadIndex() {
+        // 使用 location.reload() 重新載入 index.html
+        location.reload();
+      }
+
+      function Logout() {
+        swal({
+          title: `確認要登出嗎`,
+          icon: "warning",
+          dangerMode: true,
+
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value != null) {
+            user_id = null;
+            email = null;
+            password = null;
+            swal("您已成功登出", {
+              icon: "success",
+              buttons: {
+                confirm: {
+                  text: "確定",
+                  value: true,
+                  visible: true,
+                  className: "btn-primary",
+                  closeModal: true,
+                },
+              },
+            }).then((value) => {
+              if (value) {
+                // 導向到新的頁面
+                window.location.href = "index.html";
+              }
+            });
+          } else {
+            swal.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

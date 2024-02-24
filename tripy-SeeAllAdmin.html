@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>tripy</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/revolution/css/layers.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/revolution/css/navigation.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/revolution/css/settings.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/MagnificPopup/magnific-popup.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--===============================================================================================-->
+  </head>
+  <body class="animsition">
+    <!-- Header -->
+    <header>
+      <!-- Header desktop -->
+      <nav class="container-header-desktop">
+        <div class="wrap-menu-desktop">
+          <div class="limiter-menu-desktop container">
+            <!-- Logo desktop -->
+            <div class="logo">
+              <a href="index-admin.html"><img src="images/icons/newlogo.png" alt="LOGO"/></a>
+            </div>
+
+            <!-- Menu desktop -->
+            <div class="menu-desktop">
+              <ul class="main-menu respon-sub-menu">
+                <li>
+								<a href="tripy-SeeAllScene.html" style="font-weight: bold;">所有景點</a>
+								
+							</li>
+							<li>
+								<a href="tripy-AddNewScene.html" style="font-weight: bold;">新增景點</a>
+								
+							</li>
+							<li>
+								<a href="tripy-SeeAllMember.html" style="font-weight: bold;">所有會員</a>
+								
+							</li>
+							<li>
+								<a href="tripy-SeeAllAdmin.html" style="font-weight: bold; ">所有管理員</a>
+								
+							</li>
+							<li id="logout">
+                			</li>
+                
+
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <style>
+        .kit-underline1 {
+          position: relative;
+        }
+
+        .kit-underline1::after {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #ddd;
+          border-left: 70px solid #05233a;
+        }
+
+        .size-a-105 {
+          width: 100%;
+          height: 2px;
+        }
+        .bold-chinese-text {
+          font-family: "微軟正黑體", sans-serif;
+          font-weight: bold;
+        }
+      </style>
+    </header>
+
+    <section class="bg-0 p-b-40">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-sm-10 col-md-4 col-lg-10 p-b-30">
+            <div>
+              <!-- 返回 檢視所有管理員 新增所有管理員 -->
+              <div class="row justify-content-between align-items-center">
+                <div class="col-auto p-b-50" name="back">
+                  
+                </div>
+                <div
+                  class="col-auto flex-col-c-c p-b-50"
+                  style="position: absolute; left: 360px"
+                >
+                  <h3 class="t1-b-1 cl-3 txt-center m-b-11">檢視所有管理員</h3>
+                  <div class="size-a-2 bg-3"></div>
+                </div>
+                <div class="col-auto p-b-50" name="back">
+                  <a
+                    href="tripy-AddAdmin.html"
+                    class="size-a-1 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn1 trans-02 m-t-20"
+                  >
+                    <i class="fa fa-plus m-r-2"> 新增管理員</i>
+                  </a>
+                </div>
+              </div>
+              <div class="p-b-32">
+                <div class="size-a-105 bg-11"></div>
+                <form class="flex-row">
+                  <h4
+                    class="t1-s-4 cl-3 p-tb-10"
+                    style="font-weight: bold; margin-left: 20px"
+                  >
+                    姓名
+                  </h4>
+
+                  <h4
+                    class="t1-s-4 cl-3 p-tb-10"
+                    style="font-weight: bold; margin-left: 100px"
+                  >
+                    性別
+                  </h4>
+
+                  <h4
+                    class="t1-s-4 cl-3 p-tb-10"
+                    style="font-weight: bold; margin-left: 100px"
+                  >
+                    電子郵件
+                  </h4>
+
+                  <h4
+                    class="t1-s-4 cl-3 p-tb-10"
+                    style="font-weight: bold; margin-left: 200px"
+                  >
+                    密碼
+                  </h4>
+
+                  <h4
+                    class="t1-s-4 cl-3 p-tb-10"
+                    style="font-weight: bold; margin-left: 200px"
+                  >
+                    身分證字號
+                  </h4>
+                </form>
+                <div class="size-a-105 bg-11"></div>
+              </div>
+              <div class="p-b-32" id="AllAdmin"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="vendor/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="vendor/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="js/revo-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/waypoint/jquery.waypoints.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countterup/jquery.counterup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+    <!--===============================================================================================-->
+    <!-- SweetAlert的JS套件 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+      // 全域變數紀錄SQL指令下的次數
+      var sql_num = 0;
+      function deleteAdmin(id) {
+        console.log(id);
+        swal({
+          title: `確認要刪除該管理者嗎`,
+          icon: "warning",
+          dangerMode: true,
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value != null) {
+            console.log("You pressed OK!");
+            var request = { id: id };
+            var data_string = JSON.stringify(request); //把id變string
+            $.ajax({
+              type: "DELETE",
+              url: "http://localhost:8090/NCU_MIS_SA/api/admin.do",
+              crossDomain: true,
+              data: data_string,
+              cache: false,
+              dataType: "json",
+              timeout: 10000,
+              success: function (response) {
+                //跟後端連線成功
+                if (response.status == 200) {
+                  swal(`已成功刪除`);
+                  getAllAdmin();
+                }
+                console.log(response);
+              },
+              error: function () {
+                swal(`無法連到伺服器`);
+              },
+            });
+          } else {
+            swal.close();
+          }
+        });
+      }
+
+      function getAllAdmin() {
+        // 發出POST的GET請求取得所有會員列表
+        $.ajax({
+          type: "GET", //注意！！
+          url: "http://localhost:8090/NCU_MIS_SA/api/admin.do",
+          crossDomain: true,
+          cache: false,
+          dataType: "json",
+          timeout: 10000,
+          success: function (response) {
+            if (response.status == 200) {
+              updateTable(response.response.data);
+              updateSQLTable(response.response);
+            }
+            console.log(response.response.data);
+          },
+          error: function () {
+            swal(`無法連到伺服器`);
+          },
+        });
+      }
+
+      getAllAdmin();
+
+      // 更新會員列表表格
+      function updateTable(data) {
+        $("#AllAdmin").empty();
+        var AllAdmin_html = "";
+        $.each(data, function (index, value) {
+          AllAdmin_html +=
+            "<li class='flex-wr-sb-c bo-b-1 bcl-14 m-b-18'>" +
+            "<a href='tripy-AdminDetail.html?id="+value["id"]+"&email=" + 
+            value["email"] +"&password="+value["password"]+
+            " 'class='t1-s-2 cl-5 hov-link2 trans-02 p-tb-3'>" +
+            "<span name='left' style='margin-left: 20px'>" +
+            " </span>" +
+            "<span style='position: absolute; left: 30px'>" +
+            value["name"] +
+            "</span>" +
+            "<span style='position: absolute; left: 160px'>" +
+            value["sex"] +
+            "</span>" +
+            "<span style='position: absolute; left: 290px'>" +
+            value["email"] +
+            "</span>" +
+            "<span style='position: absolute; left: 550px'>" +
+            value["password"] +
+            "</span>" +
+            "<span style='position: absolute; left: 777px'>" +
+            value["idcard"] +
+            "</span>";
+
+          if (value["id"] != 1) {
+            AllAdmin_html +=
+              '<a href="javascript: deleteAdmin(' +
+              value["id"] +
+              ');"><i class="fs-14 cl-7 fa fa-trash m-r-2"> 刪除</i></a>';
+          }
+        });
+
+        $("#AllAdmin").append(AllAdmin_html);
+      }
+
+      function updateSQLTable(data) {
+        $("#sql_log > tbody").empty();
+        var time = (data.time / 1000000).toFixed(2);
+        var table_html = "";
+
+        sql_num = 0;
+        sql_num += 1;
+
+        table_html += "<tr>";
+        table_html += "<td>" + sql_num + "</td>";
+        table_html += "<td>" + data.sql + "</td>";
+        table_html += '<td style="text-align: right">' + "0" + "</td>";
+        table_html += '<td style="text-align: right">' + data.row + "</td>";
+        table_html += '<td style="text-align: right">' + data.row + "</td>";
+        table_html += '<td style="text-align: right">' + time + "</td>";
+        table_html += "</tr>";
+        $("#sql_log > tbody").append(table_html);
+        $("#sql_summary").html(
+          "(default) " + data.row + " queries took " + time + " ms"
+        );
+      }
+      $(document).ready(function () {
+        getAllAdmin();
+      });
+      
+      //logout
+		$("#logout").empty();
+        var logout_html = "";
+         logout_html +="<a href='#' onclick='Logout()' style='font-weight: bold'>登出</a> ";
+
+        $("#logout").append(logout_html);
+        
+        
+      function Logout() {
+        swal({
+          title: `確認要登出嗎`,
+          icon: "warning",
+          dangerMode: true,
+
+          buttons: {
+            Btn: false,
+            confirm: {
+              text: "確認",
+              visible: true,
+            },
+            cancel: {
+              text: "取消",
+              visible: true,
+            },
+          },
+        }).then((value) => {
+          if (value != null) {
+            user_id = null;
+            email = null;
+            password = null;
+            swal("您已成功登出", {
+              icon: "success",
+              buttons: {
+                confirm: {
+                  text: "確定",
+                  value: true,
+                  visible: true,
+                  className: "btn-primary",
+                  closeModal: true,
+                },
+              },
+            }).then((value) => {
+              if (value) {
+                // 導向到新的頁面
+                window.location.href = "index.html";
+              }
+            });
+          } else {
+            swal.close();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

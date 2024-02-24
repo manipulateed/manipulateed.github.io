@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>tripy</title>
+	<meta charset="UTF-8">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="statics/js/jquery-3.4.1.min.js"></script>
+  	<script src="statics/js/jquery-confirm.js"></script>
+  	<script src="statics/js/big.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body class="animsition">
+
+	<!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<nav class="container-header-desktop">
+			<div class="wrap-menu-desktop">
+				<div class="limiter-menu-desktop container">					
+					<!-- Logo desktop -->		
+					<div class="logo">
+						<a href="index-admin.html"><img src="images/icons/newlogo.png" alt="LOGO"></a>
+					</div>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu respon-sub-menu">
+							<li>
+								<a href="tripy-SeeAllScene.html" style="font-weight: bold;">所有景點</a>
+								
+							</li>
+							<li>
+								<a href="tripy-AddNewScene.html" style="font-weight: bold;">新增景點</a>
+								
+							</li>
+							<li>
+								<a href="tripy-ModifyScene.html" style="font-weight: bold;">修改景點</a>
+								
+							</li>
+							<li>
+								<a href="tripy-SeeAllMember.html" style="font-weight: bold;">所有會員</a>
+								
+							</li>
+							<li>
+								<a href="tripy-SeeAllAdmin.html" style="font-weight: bold;">所有管理員</a>
+								
+							</li>
+							<li id="logout">
+                			</li>
+						</ul>
+					</div>					
+				</div>
+			</div>	
+		</nav>
+        <style>
+            .borderOne{
+                border-radius: 30px;
+            }
+
+        </style>
+        
+	</header>
+
+	<!-- Content -->
+	<div class="bg-0 p-b-70">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-sm-10 col-md-4 col-lg-3 p-b-30">
+					<!-- Left bar -->
+					<div>
+						<!-- Categories -->
+						<div class="p-b-32">
+                            <a id="back" href="" class="size-a-1 d-inline-flex flex-c-c bg-11 t1-s-2 text-uppercase cl-0 hov-btn1 trans-02 m-b-20">
+                                <i class="fa fa-long-arrow-left m-r-15"></i>
+                                返回
+                               
+                            </a>
+                        							
+						</div>
+
+						<!-- map -->
+						<iframe id="google" class="m-b-45 p-t-20 p-r-20" src=""
+                        width="300px;" height = "270px;"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        
+                        <div class="size-w-0 flex-wr-s-c m-b-11"style="display: flex;justify-content: space-between;align-items: center;">
+							<button  type="button"id="clean" class="btn btn-outline-dark d-inline-flex flex-c-c size-a-23 bg-5 p-rl-10 t1-s-2 text-uppercase cl-0 hov-btn1 trans-02 borderOne bold-chinese-text"disabled>
+								清除變更
+							</button>
+							<button  type="button" id="submit" class="btn btn-outline-success d-inline-flex flex-c-c size-a-23 bg-5 p-rl-10 t1-s-2 text-uppercase cl-0 hov-btn1 trans-02 borderOne bold-chinese-text"disabled>
+								更新變更
+							</button>
+						</div>
+						
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-md-8 col-lg-9 p-b-30">
+					<div class="p-l-50 p-l-15-sr991 p-l-0-sr767">
+						<!-- News detail -->
+						<div class="m-b-25 ">						
+                            <ul style="width: 100%;"> 
+								<li class="bo-b-1 bcl-14 m-b-18" style="margin-bottom:20px">
+                                    <span class="size-w-0 flex-wr-s-c m-b-11">
+										<div class="p-rl-20 bo-l-1 bcl-12">
+										<div style="height:200px; margin-top:-50px; margin-bottom: 30px;">
+											<img class="m-b-45 max-s-full"  src="" alt="IMG" id="image" style="background-size: cover; height: 100%; width:100%;">
+                           				</div>
+										</div>
+                                        
+                                    </span>
+	                            </li>
+	                            
+	                            <li class="bo-b-1 bcl-14 m-b-18" style="margin-bottom:20px">
+                                    <span class="size-w-0 flex-wr-s-c m-b-11">
+										<div class="p-rl-20 bo-l-1 bcl-12">
+										<h4 class="t1-b-3 cl-10 m-b-11 bold-chinese-text" id= "name">
+
+										</h4>
+										</div>                                       
+                                    </span>
+	                            </li>
+	                            
+	    
+	                            <li class="bo-b-1 bcl-14 m-b-18"style="margin-bottom:20px">
+                                    <span class="size-w-0 flex-wr-s-c m-b-11">
+										<div class="p-rl-20 bo-l-1 bcl-12">
+		                                    <i class="fs-14 cl-7 fa fa-map-marker m-r-2"></i>
+		                            
+		                                    <span class="t1-s-2 cl-7 bold-chinese-text" id= "address">
+		 
+		                                    </span>
+		                                </div>
+                                        <span class="p-rl-20 bo-l-1 bcl-12">
+                                            <i class="fs-14 cl-7 fa fa-pencil m-r-2"></i>                                        
+                                        	<a href="javascript:void(0);" onclick="modifyaddress()" class="t1-s-2 cl-11 hov-link3">編輯</a>
+                                        </span>
+                                    </span>
+                            	</li>
+	
+	                            <li class="bo-b-1 bcl-14 m-b-18"style="margin-bottom:20px">
+                                    <span class="size-w-0 flex-wr-s-c m-b-11">
+										<div class="p-rl-20 bo-l-1 bcl-12">
+		                                    <i class="fs-14 cl-7 fa fa-clock-o m-r-2"></i>
+		                            
+		                                    <span class="t1-s-2 cl-7 bold-chinese-text" id= "opentime">
+		
+		                                    </span>
+		                                </div>
+                                        <span class="p-rl-20 bo-l-1 bcl-12">
+                                            <i class="fs-14 cl-7 fa fa-pencil m-r-2"></i>                                        
+                                        	<a href="javascript:void(0);" onclick="modifyopentime()" class="t1-s-2 cl-11 hov-link3">編輯</a>
+                                        </span>
+                                    </span>
+	                            </li>
+	
+	                            <li class="bo-b-1 bcl-14 m-b-18"style="margin-bottom:20px">
+                                    <span class="size-w-0 flex-wr-s-c m-b-11">
+										 <div class="p-rl-20 bo-l-1 bcl-12">
+		                                    <i class="fs-14 cl-7 fa fa-phone m-r-2"></i>	                            
+		                                    <span  class="t1-s-2 cl-11 bold-chinese-text" id= "phone">
+		
+		                                    </span>
+		                                </div>
+                                        <span class="p-rl-20 bo-l-1 bcl-12">
+                                            <i class="fs-14 cl-7 fa fa-pencil m-r-2"></i>                                        
+                                        	<a href="javascript:void(0);" onclick="modifyphone()" class="t1-s-2 cl-11 hov-link3">編輯</a>
+                                        </span>
+                                    </span>
+	                            </li>
+	                            <li  class="bo-b-1 bcl-14 m-b-18 " style="margin-bottom:20px;">									                                    
+                                    <span class="size-w-0 flex-wr-s-c m-b-11">
+										 <div class="p-l-20 bo-l-1 bcl-12">                            
+		                                    <p class="t1-s-2 cl-3 m-b-9 bold-chinese-text " id= "detail">							
+                        					</p>
+		                                </div>
+                                        <span class="p-rl-20 bo-l-1 bcl-12">
+                                            <i class="fs-14 cl-7 fa fa-pencil m-r-2"></i>                                        
+                                        	<a href="javascript:void(0);" onclick="modifydetail()" class="t1-s-2 cl-11 hov-link3">編輯</a>
+                                        </span>
+                                  </span>                                 
+			                  </li>
+    						</ul>
+	                          
+						</div>														
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript">
+					
+					// 取得網址參數
+                var url_string = window.location.href;
+                var url = new URL(url_string);
+                var scene_id = url.searchParams.get("scene_id");
+				$("#back").attr("href", "tripy-SeeAllScene.html");
+
+				var o_name, o_address, o_phone, o_opentime, o_detail;
+		  		function getSceneData() {
+				  	$.ajax({
+			          type: "GET",
+			          url: "api/scene.do",
+			          data: "id=" + scene_id,
+			          crossDomain: true,
+			          cache: false,
+			          dataType: 'json',
+			          timeout: 5000,
+			          success: function (response) {
+			              if(response.status == 200){
+			            	  updateHTML(response.response.data);
+			              }
+			          },
+			          error: function () {
+			              alert("無法連線到伺服器！");
+			          }
+			    	});
+			  	}			  	
+				  		
+			  	getSceneData();
+			  			  	
+
+                $("#submit").click(function submit() {
+
+                   Swal.fire({
+						  icon: "question",
+						  title: "Are You Sure?",
+						  text: "確定要修改景點資訊嗎?",
+						  confirmButtonText: "Yes",
+						  showCancelButton: true,
+						  cancelButtonText: "No",				                  
+							}).then((result) => {
+							   if (result.isConfirmed) {							
+					                // 將資料組成JSON格式
+					                var data_object = {
+									    "detail": $("#detail").text(),
+									    "address": $("#address").text(),
+									    "phone": $("#phone").text(),
+									    "opentime": $("#opentime").text(),
+									    "name": $("#name").text(),
+									    "images": "",
+									    "id": scene_id,
+									};
+					
+					                // 將JSON格式轉換成字串
+					                var data_string = JSON.stringify(data_object);
+					
+					                // 發出POST的AJAX請求
+					                $.ajax({
+					                        type: "PUT",
+					                        url: "api/scene.do",
+					                        data: data_string,
+					                        crossDomain: true,
+					                        cache: false,
+					                        dataType: 'json',
+					                        timeout: 5000,
+					                        success: function (response) {
+					                            if(response.status == 200){
+													Swal.fire({
+										                    icon: "success",
+										                    title: "Success!",
+										  					text: response.message,
+										  					confirmButtonText: "OKay",
+										                  }).then((result) => {
+										                    if (result) {
+										                      // 導向到新的頁面
+										                     window.location.href = url;
+										                  } 
+										              });
+					                            }    
+					                        },
+					                        error: function () {
+					                            alert("無法連線到伺服器！");
+					                        }
+					                 });		                       	    
+			            }							
+	             	});  
+	              });
+	              
+	              
+	              $("#clean").click(function submit() {
+
+                   Swal.fire({
+						  icon: "question",
+						  title: "Are You Sure?",
+						  text: "確定要清除變更嗎?",
+						  confirmButtonText: "Yes",
+						  showCancelButton: true,
+						  cancelButtonText: "No",				                  
+							}).then((result) => {
+							   if (result.isConfirmed) {							
+					                // 將資料組成JSON格式
+								    $("#detail").html(o_detail);
+								    $("#address").html(o_address);
+								    $("#phone").html(o_phone);
+								    $("#opentime").html(o_opentime);
+								    $("#name").html(o_name);			                                    	    
+			            }							
+	             	});  
+	              });                    	
+	                                  	
+				function updateHTML(data) {
+					$("#name").html(data[0]['Scene_info']['name']);
+					$("#address").html(data[0]['Scene_info']['address']);
+					$("#phone").html(data[0]['Scene_info']['phone']);
+					$("#opentime").html(data[0]['Scene_info']['opentime']);
+					$("#detail").html(data[0]['Scene_info']['detail']);
+					$("#image").attr("src", "images/"+data[0]['Scene_info']['name']+".jpg");
+					o_address = $("#address").text();
+					o_phone = $("#phone").text();
+					o_opentime = $("#opentime").text();
+					o_detail = $("#detail").text();
+					getMap(data[0]['Scene_info']['name']); 				
+				  }
+				 					  
+					async function modifyaddress(){
+						const inputValue = $("#address").text();
+						const { value: address } = await Swal.fire({
+						  title: "請輸入景點地址...",
+						  input: "text",
+						  inputLabel: "景點地址",
+						  inputValue,
+						  showCancelButton: true,						  
+						});
+						if (address) {
+						  $("#address").html(address); 
+						  if($("#name").text() !== o_name){
+							  $("#submit, #clean").prop("disabled", false);
+						  }
+						}
+					}
+					async function modifyphone(){
+						const inputValue = $("#phone").text();
+						const { value: phone } = await Swal.fire({
+						  title: "請輸入景點電話...",
+						  input: "text",
+						  inputLabel: "景點電話",
+						  inputValue,
+						  showCancelButton: true,						  
+						});
+						if (phone) {
+						  $("#phone").html(phone); 
+						  if($("#phone").text() !== o_phone){
+							  $("#submit, #clean").prop("disabled", false);
+						  }
+						}
+					}
+					async function modifyopentime(){
+						const inputValue = $("#opentime").text();
+						const { value: opentime } = await Swal.fire({
+						  title: "請輸入景點營業時間...",
+						  input: "text",
+						  inputLabel: "景點營業時間",
+						  inputValue,
+						  showCancelButton: true,						  
+						});
+						if (opentime) {
+						  $("#opentime").html(opentime); 
+						  if($("#opentime").text() !== o_opentime){
+							  $("#submit, #clean").prop("disabled", false);
+						  }
+						}
+					}
+					async function modifydetail(){
+						var inputValue = $("#detail").text();
+						const { value: detail } = await Swal.fire({
+						  title: "請描述景點...",
+						  input: "textarea",
+						  inputLabel: "景點簡介",
+						  inputValue,
+						  showCancelButton: true,						  
+						});
+						if (detail) {
+					  		$("#detail").html(detail); 	
+					  		if($("#detail").text() !== o_detail){
+							  $("#submit, #clean").prop("disabled", false);
+						  }				
+						}															
+				    }						 				  
+				  
+				  // 載入 CSV 檔案
+				  function getMap(name){
+						var csvFilePath = 'Tripy.csv';
+						var map ="";
+						Papa.parse(csvFilePath, {
+						    download: true,
+						    complete: function (results) {
+						        // 資料成功解析後的回呼函式
+						
+						        // 資料儲存在 results.data 中
+						        var data = results.data;				
+						
+						        // 在資料陣列中尋找符合條件的行
+						        var targetRow = data.find(function (row) {
+						            return row[2] === name; // 假設 id 在 CSV 中的第一個欄位
+						        });
+						
+						        // 檢查是否找到了符合條件的行
+						        if (targetRow) {
+						            // 現在，targetRow 包含符合條件的整行資料	
+						           console.log(targetRow[3]);				
+						           map =  targetRow[3];
+						           $("#google").attr("src", map);
+						        } else {
+						            console.log("未找到符合條件的資料行");
+						        }
+						    }
+						});
+					}
+					//logout
+					$("#logout").empty();
+			        var logout_html = "";
+			         logout_html +=
+			          "<a href='#' onclick='Logout()' style='font-weight: bold'>登出</a> ";
+			
+			        $("#logout").append(logout_html);
+			        
+			        
+			      function Logout() {
+			        swal({
+			          title: `確認要登出嗎`,
+			          icon: "warning",
+			          dangerMode: true,
+			
+			          buttons: {
+			            Btn: false,
+			            confirm: {
+			              text: "確認",
+			              visible: true,
+			            },
+			            cancel: {
+			              text: "取消",
+			              visible: true,
+			            },
+			          },
+			        }).then((value) => {
+			          if (value != null) {
+			            user_id = null;
+			            email = null;
+			            password = null;
+			            swal("您已成功登出", {
+			              icon: "success",
+			              buttons: {
+			                confirm: {
+			                  text: "確定",
+			                  value: true,
+			                  visible: true,
+			                  className: "btn-primary",
+			                  closeModal: true,
+			                },
+			              },
+			            }).then((value) => {
+			              if (value) {
+			                // 導向到新的頁面
+			                window.location.href = "index.html";
+			              }
+			            });
+			          } else {
+			            swal.close();
+			          }
+			        });
+			      }
+			</script>
+		</div>
+	</div>
+	
+	
+	<!-- Footer -->
+	<footer>
+		
+	</footer>
+
+
+
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/parallax100/parallax100.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/waypoint/jquery.waypoints.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countterup/jquery.counterup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/slick/slick.min.js"></script>
+	<script src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
