@@ -1,497 +1,696 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>tripy</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="statics/js/jquery-3.4.1.min.js"></script>
-    <script src="statics/js/jquery-confirm.js"></script>
-    <script src="statics/js/big.min.js"></script>
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/bootstrap/css/bootstrap.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
-    />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/css-hamburgers/hamburgers.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/animsition/css/animsition.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/revolution/css/layers.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/revolution/css/navigation.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/revolution/css/settings.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/select2/select2.min.css"
-    />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css" />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/MagnificPopup/magnific-popup.css"
-    />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.min.css" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <!--===============================================================================================-->
-  </head>
-  <body class="animsition">
-    <!-- Header -->
-    <header>
-      <!-- Header desktop -->
-      <nav class="container-header-desktop">
-        <div class="wrap-menu-desktop">
-          <div class="limiter-menu-desktop container">
-            <!-- Logo desktop -->
-            <div class="logo" id="index">
-              <a href="index.html"
-                ><img src="images/icons/newlogo.png" alt="LOGO"
-              /></a>
-            </div>
+<!DOCTYPE html>
+<html lang="zh-TW">
 
-            <!-- Menu desktop -->
-            <div class="menu-desktop">
-              <ul class="main-menu respon-sub-menu">
-                <li id="city">
-                  <!-- <a href="tripy-City.html" style="font-weight: bold">景點</a> -->
-                </li>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柯翔閔 Siang-Min Ke | 全端工程師 & AI 開發者</title>
 
-                <li id="plan">
-                  <!-- <a
-                    href="tripy-StartPlanning.html?user_id=1"
-                    style="font-weight: bold"
-                    >觀光行程</a
-                  > -->
-                </li>
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
-                <li id="FL">
-                  <!-- <a href="tripy-FavoriteList.html" style="font-weight: bold"
-                    >我的收藏</a
-                  > -->
-                </li>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-                <li id="login">
-                  <a href="tripy-login.html" style="font-weight: bold">登入</a>
-                </li>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-                <li id="logout">
-                  <!-- <button onclick="Logout()" style="font-weight: bold">
-                    登出
-                  </button> -->
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <style>
-        .bold-chinese-text {
-          font-family: "微軟正黑體", sans-serif;
-          font-weight: bold;
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #0f172a;
+            /* Slate 900 */
+            color: #e2e8f0;
+            /* Slate 200 */
         }
-      </style>
-    </header>
 
-    <!-- Slide -->
-    <section class="slider">
-      <div class="rev_slider_wrapper fullwidthbanner-container">
-        <div
-          id="rev_slider_1"
-          class="rev_slider fullwidthabanner"
-          data-version="5.4.5"
-          style="display: none"
-        >
-          <ul>
-            <!-- Slide 1 -->
-            <li data-transition="slidingoverlayhorizontal">
-              <img
-                src="images/trip1.webp"
-                alt="IMG-SLIDE"
-                class="rev-slidebg"
-              />
-
-              <h2
-                class="tp-caption tp-resizeme caption-1 text-uppercase"
-                data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:left;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                data-visibility="['on', 'on', 'on', 'on']"
-                data-fontsize="['48', '48', '48', '38']"
-                data-lineheight="['58', '58', '58', '58']"
-                data-color="['#FFF']"
-                data-textAlign="['center', 'center', 'center', 'center']"
-                data-x="['center']"
-                data-y="['center']"
-                data-hoffset="['0', '0', '0', '0']"
-                data-voffset="['-83', '-83', '-83', '-93']"
-                data-width="['1200','992','768','480']"
-                data-height="['auto', 'auto', 'auto', 'auto']"
-                data-whitespace="['normal']"
-                data-paddingtop="[0, 0, 0, 0]"
-                data-paddingright="[15, 15, 15, 15]"
-                data-paddingbottom="[0, 0, 0, 0]"
-                data-paddingleft="[15, 15, 15, 15]"
-                data-basealign="slide"
-                data-responsive_offset="off"
-              >
-                Welcome to tripy
-              </h2>
-
-              <p
-                class="tp-caption tp-resizeme caption-2 bold-chinese-text"
-                data-frames='[{"delay":1500,"speed":1500,"frame":"0","from":"x:right;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                data-visibility="['on', 'on', 'on', 'on']"
-                data-fontsize="['30', '30', '30', '25']"
-                data-lineheight="['39', '39', '39', '39']"
-                data-color="['#FFF']"
-                data-textAlign="['center', 'center', 'center', 'center']"
-                data-x="['center']"
-                data-y="['center']"
-                data-hoffset="['0', '0', '0', '0']"
-                data-voffset="['-13', '-13', '-13', '-13']"
-                data-width="['1200','992','768','480']"
-                data-height="['auto', 'auto', 'auto', 'auto']"
-                data-whitespace="['normal']"
-                data-paddingtop="[0, 0, 0, 0]"
-                data-paddingright="[15, 15, 15, 15]"
-                data-paddingbottom="[0, 0, 0, 0]"
-                data-paddingleft="[15, 15, 15, 15]"
-                data-basealign="slide"
-                data-responsive_offset="off"
-              >
-                讓你為旅遊輕鬆做準備
-              </p>
-            </li>
-
-            <!-- Slide 2 -->
-            <li data-transition="slidingoverlayvertical">
-              <img
-                src="images/trip2.webp"
-                alt="IMG-SLIDE"
-                class="rev-slidebg"
-              />
-
-              <h2
-                class="tp-caption tp-resizeme caption-1 text-uppercase"
-                data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"y:top;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                data-visibility="['on', 'on', 'on', 'on']"
-                data-fontsize="['48', '48', '48', '38']"
-                data-lineheight="['58', '58', '58', '58']"
-                data-color="['#FFF']"
-                data-textAlign="['center', 'center', 'center', 'center']"
-                data-x="['center']"
-                data-y="['center']"
-                data-hoffset="['0', '0', '0', '0']"
-                data-voffset="['-83', '-83', '-83', '-93']"
-                data-width="['1200','992','768','480']"
-                data-height="['auto', 'auto', 'auto', 'auto']"
-                data-whitespace="['normal']"
-                data-paddingtop="[0, 0, 0, 0]"
-                data-paddingright="[15, 15, 15, 15]"
-                data-paddingbottom="[0, 0, 0, 0]"
-                data-paddingleft="[15, 15, 15, 15]"
-                data-basealign="slide"
-                data-responsive_offset="off"
-              >
-                Welcome to tripy
-              </h2>
-
-              <p
-                class="tp-caption tp-resizeme caption-2 bold-chinese-text"
-                data-frames='[{"delay":1500,"speed":1500,"frame":"0","from":"y:bottom;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                data-visibility="['on', 'on', 'on', 'on']"
-                data-fontsize="['30', '30', '30', '25']"
-                data-lineheight="['39', '39', '39', '39']"
-                data-color="['#FFF']"
-                data-textAlign="['center', 'center', 'center', 'center']"
-                data-x="['center']"
-                data-y="['center']"
-                data-hoffset="['0', '0', '0', '0']"
-                data-voffset="['-13', '-13', '-13', '-13']"
-                data-width="['1200','992','768','480']"
-                data-height="['auto', 'auto', 'auto', 'auto']"
-                data-whitespace="['normal']"
-                data-paddingtop="[0, 0, 0, 0]"
-                data-paddingright="[15, 15, 15, 15]"
-                data-paddingbottom="[0, 0, 0, 0]"
-                data-paddingleft="[15, 15, 15, 15]"
-                data-basealign="slide"
-                data-responsive_offset="off"
-              >
-                規劃 • 旅遊 • 分享
-              </p>
-            </li>
-
-            <!-- Slide 3 -->
-            <li data-transition="boxslide">
-              <img
-                src="images/trip3.webp"
-                alt="IMG-SLIDE"
-                class="rev-slidebg"
-              />
-
-              <h2
-                class="tp-caption tp-resizeme caption-1 text-uppercase"
-                data-frames='[{"delay":500,"speed":1500,"frame":"0","from":"x:-500px;skX:85px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                data-visibility="['on', 'on', 'on', 'on']"
-                data-fontsize="['48', '48', '48', '38']"
-                data-lineheight="['58', '58', '58', '58']"
-                data-color="['#FFF']"
-                data-textAlign="['center', 'center', 'center', 'center']"
-                data-x="['center']"
-                data-y="['center']"
-                data-hoffset="['0', '0', '0', '0']"
-                data-voffset="['-83', '-83', '-83', '-93']"
-                data-width="['1200','992','768','480']"
-                data-height="['auto', 'auto', 'auto', 'auto']"
-                data-whitespace="['normal']"
-                data-paddingtop="[0, 0, 0, 0]"
-                data-paddingright="[15, 15, 15, 15]"
-                data-paddingbottom="[0, 0, 0, 0]"
-                data-paddingleft="[15, 15, 15, 15]"
-                data-basealign="slide"
-                data-responsive_offset="off"
-              >
-                Welcome to tripy
-              </h2>
-
-              <p
-                class="tp-caption tp-resizeme caption-2 bold-chinese-text"
-                data-frames='[{"delay":1500,"speed":1500,"frame":"0","from":"x:500px;skX:-85px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                data-visibility="['on', 'on', 'on', 'on']"
-                data-fontsize="['30', '30', '30', '25']"
-                data-lineheight="['39', '39', '39', '39']"
-                data-color="['#FFF']"
-                data-textAlign="['center', 'center', 'center', 'center']"
-                data-x="['center']"
-                data-y="['center']"
-                data-hoffset="['0', '0', '0', '0']"
-                data-voffset="['-13', '-13', '-13', '-13']"
-                data-width="['1200','992','768','480']"
-                data-height="['auto', 'auto', 'auto', 'auto']"
-                data-whitespace="['normal']"
-                data-paddingtop="[0, 0, 0, 0]"
-                data-paddingright="[15, 15, 15, 15]"
-                data-paddingbottom="[0, 0, 0, 0]"
-                data-paddingleft="[15, 15, 15, 15]"
-                data-basealign="slide"
-                data-responsive_offset="off"
-              >
-                立即體驗行程規劃的樂趣
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!--===============================================================================================-->
-
-    <!--===============================================================================================-->
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script src="vendor/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="vendor/revolution/js/extensions/revolution.extension.video.min.js"></script>
-    <script src="vendor/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script src="vendor/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script src="vendor/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script src="vendor/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script src="vendor/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script src="vendor/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script src="vendor/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script src="vendor/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script src="js/revo-custom.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/parallax100/parallax100.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/waypoint/jquery.waypoints.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/countterup/jquery.counterup.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/slick/slick.min.js"></script>
-    <script src="js/slick-custom.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="js/main.js"></script>
-    <!--===============================================================================================-->
-
-    <!-- SweetAlert的JS套件 -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <script>
-      var url_string = window.location.href;
-      var url = new URL(url_string);
-
-      var user_id = url.searchParams.get("user_id");
-      if (user_id == "" || user_id == "null") {
-        user_id = null;
-      }
-      var email = url.searchParams.get("email");
-      if (email == "" || email == "null") {
-        email = null;
-      }
-      var password = url.searchParams.get("password");
-      if (password == "" || password == "null") {
-        password = null;
-      }
-
-      $(document).ready(function () {
-        showCity();
-        showIndex();
-        if (user_id != null && email != null && password != null) {
-          showPlan();
-          showFL();
-          showName();
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
         }
-      });
 
-      function showCity() {
-        $("#city").empty();
-        var inner_html = "";
-        inner_html += inner_html +=
-          "<a href='tripy-City.html?user_id=" + user_id;
-        inner_html += "&email=" + email + "&password=" + password + "'";
-        inner_html += "style='font-weight: bold'>景點</a>";
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
 
-        $("#city").append(inner_html);
-      }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-      function showPlan() {
-        $("#plan").empty();
-        var inner_html = "";
-        inner_html += "<a href='tripy-StartPlanning.html?user_id=" + user_id;
-        inner_html += "&email=" + email + "&password=" + password + "'";
-        inner_html += "style='font-weight: bold'>我的行程</a>";
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-        $("#plan").append(inner_html);
-      }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
 
-      function showFL() {
-        $("#FL").empty();
-        var inner_html = "";
-        inner_html += "<a href='tripy-FavoriteList.html?user_id=" + user_id;
-        inner_html += "&email=" + email + "&password=" + password + "'";
-        inner_html += "style='font-weight: bold'>我的收藏</a>";
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
 
-        $("#FL").append(inner_html);
-      }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
 
-      function showName() {
-        $("#login").empty();
-        var inner_html = "";
-        inner_html += "<a href='tripy-MemberDetail.html?user_id=" + user_id;
-        inner_html += "&email=" + email + "&password=" + password + "'";
-        inner_html += "style='font-weight: bold'>會員資料</a>";
+        .tech-pill {
+            transition: all 0.3s ease;
+        }
 
-        $("#logout").empty();
-        var logout_html = "";
-        logout_html +=
-          "<a href='#' onclick='Logout()' style='font-weight: bold'>登出</a> ";
+        .tech-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
 
-        $("#login").append(inner_html);
-        $("#logout").append(logout_html);
-      }
+<body>
+    <div id="root"></div>
 
-      function showIndex() {
-        $("#index").empty();
-        var inner_html = "";
-        inner_html +=
-          "<a href='javascript:void(0);' onclick='reloadIndex()' style='font-weight: bold'>";
-        inner_html += "<img src='images/icons/newlogo.png' alt='LOGO' /></a>";
+    <script type="text/babel" data-presets="env,react">
+        const { useState, useEffect } = React;
 
-        $("#index").append(inner_html);
-      }
+        /* =========================
+           自訂一組簡單 Icon 元件
+           （名稱沿用 Map / Database ...）
+           ========================= */
+        const BaseIcon = ({ size = 24, className = "", label = "★" }) => (
+            <span
+                className={className}
+                style={{
+                    fontSize: size,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                }}
+            >
+                {label}
+            </span>
+        );
 
-      function reloadIndex() {
-        // 使用 location.reload() 重新載入 index.html
-        location.reload();
-      }
+        const Map = (p) => <BaseIcon label="🗺️"  {...p} />;
+        const Database = (p) => <BaseIcon label="🗄️"  {...p} />;
+        const Layers = (p) => <BaseIcon label="📚"  {...p} />;
+        const Shield = (p) => <BaseIcon label="🛡️"  {...p} />;
+        const Code = (p) => <BaseIcon label="💻"  {...p} />;
+        const Server = (p) => <BaseIcon label="🖥️"  {...p} />;
+        const Smartphone = (p) => <BaseIcon label="📱"  {...p} />;
+        const Award = (p) => <BaseIcon label="🏅"  {...p} />;
+        const BookOpen = (p) => <BaseIcon label="📖"  {...p} />;
+        const ExternalLink = (p) => <BaseIcon label="🔗"  {...p} />;
+        const Github = (p) => <BaseIcon label="🐙"  {...p} />;
+        const Mail = (p) => <BaseIcon label="✉️"  {...p} />;
+        const User = (p) => <BaseIcon label="👤"  {...p} />;
+        const ChevronDown = (p) => <BaseIcon label="⌄"  {...p} />;
+        const Briefcase = (p) => <BaseIcon label="💼"  {...p} />;
+        const Cpu = (p) => <BaseIcon label="🧠"  {...p} />;
+        const Layout = (p) => <BaseIcon label="📊"  {...p} />;
+        const MessageSquare = (p) => <BaseIcon label="💬"  {...p} />;
+        const Truck = (p) => <BaseIcon label="🚚"  {...p} />;
 
-      function Logout() {
-        swal({
-          title: `確認要登出嗎`,
-          icon: "warning",
-          dangerMode: true,
+        /* =========================
+           主組件
+           ========================= */
+        const Portfolio = () => {
+            const [isScrolled, setIsScrolled] = useState(false);
 
-          buttons: {
-            Btn: false,
-            confirm: {
-              text: "確認",
-              visible: true,
-            },
-            cancel: {
-              text: "取消",
-              visible: true,
-            },
-          },
-        }).then((value) => {
-          if (value != null) {
-            user_id = null;
-            email = null;
-            password = null;
-            swal("您已成功登出", {
-              icon: "success",
-              buttons: {
-                confirm: {
-                  text: "確定",
-                  value: true,
-                  visible: true,
-                  className: "btn-primary",
-                  closeModal: true,
-                },
-              },
-            }).then((value) => {
-              if (value) {
-                // 導向到新的頁面
-                window.location.href = "index.html";
-              }
-            });
-          } else {
-            swal.close();
-          }
-        });
-      }
+            useEffect(() => {
+                const handleScroll = () => {
+                    setIsScrolled(window.scrollY > 50);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const scrollTo = (id) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            const skills = {
+                frontend: ["Flutter (Dart)", "GetX", "FVM", "HTML/CSS/JS", "React", "Bootstrap"],
+                backend: ["Firebase (Firestore, Realtime DB, Auth, Storage)", "Flask (Python)", "Java", "MySQL", "MongoDB"],
+                ai_data: ["Generative AI", "LangChain", "OpenAI API", "CNN/LSTM", "TensorFlow", "OpenCV"],
+                tools: ["Git", "Docker", "GCP", "Google Maps Platform", "Postman"]
+            };
+
+            return (
+                <div className="min-h-screen relative overflow-hidden">
+                    {/* Background Elements */}
+                    <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+                        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/10 rounded-full blur-[120px]"></div>
+                        <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-purple-500/10 rounded-full blur-[100px]"></div>
+                    </div>
+
+                    {/* Navbar */}
+                    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
+                            ? 'bg-slate-900/90 backdrop-blur-md border-b border-slate-800 py-4'
+                            : 'bg-transparent py-6'
+                        }`}>
+                        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+                            <h1
+                                className="text-2xl font-bold font-mono tracking-tighter cursor-pointer"
+                                onClick={() => scrollTo('home')}
+                            >
+                                <span className="text-sky-400">&lt;</span>
+                                Siang-Min
+                                <span className="text-sky-400">/&gt;</span>
+                            </h1>
+                            <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                                {['About', 'Projects', 'Experience', 'Honors'].map((item) => (
+                                    <button
+                                        key={item}
+                                        onClick={() => scrollTo(item.toLowerCase())}
+                                        className="hover:text-sky-400 transition-colors"
+                                    >
+                                        {item}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </nav>
+
+                    {/* Hero Section */}
+                    <section id="home" className="pt-32 pb-20 px-6 min-h-screen flex items-center">
+                        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                            <div className="space-y-6">
+                                <div className="inline-block px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 text-sm font-mono border border-sky-500/20">
+                                    Available for hire
+                                </div>
+                                <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+                                    我是 <span className="gradient-text">柯翔閔</span>
+                                </h1>
+                                <h2 className="text-2xl md:text-3xl text-slate-400 font-light">
+                                    全端開發 &amp; AI 整合專家
+                                </h2>
+                                <p className="text-slate-400 text-lg max-w-lg leading-relaxed">
+                                    擅長將複雜的業務邏輯轉化為優雅的應用程式。專注於 Flutter APP 開發、
+                                    Firebase 架構設計以及生成式 AI 的落地應用。致力於創造具有實際商業價值的數位產品。
+                                </p>
+                                <div className="flex gap-4 pt-4">
+                                    <a
+                                        href="mailto:your.email@example.com"
+                                        className="px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-lg font-medium transition-all shadow-lg shadow-sky-500/25 flex items-center gap-2"
+                                    >
+                                        <Mail size={18} /> 聯絡我
+                                    </a>
+                                    <a
+                                        href="https://github.com/yourgithub"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="px-6 py-3 glass-card hover:bg-slate-800 rounded-lg font-medium transition-all flex items-center gap-2"
+                                    >
+                                        <Github size={18} /> GitHub
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Visual Element */}
+                            <div className="relative hidden md:block">
+                                <div className="relative w-full aspect-square max-w-md mx-auto">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+                                    <div className="relative z-10 grid grid-cols-2 gap-4 p-4">
+                                        <div className="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 transform translate-y-8">
+                                            <Smartphone className="text-sky-400" size={40} />
+                                            <span className="font-mono text-sm">Flutter Expert</span>
+                                        </div>
+                                        <div className="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3">
+                                            <Database className="text-purple-400" size={40} />
+                                            <span className="font-mono text-sm">Firebase Cloud</span>
+                                        </div>
+                                        <div className="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3">
+                                            <Cpu className="text-emerald-400" size={40} />
+                                            <span className="font-mono text-sm">Gen AI Integration</span>
+                                        </div>
+                                        <div className="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-3 transform -translate-y-8">
+                                            <Map className="text-orange-400" size={40} />
+                                            <span className="font-mono text-sm">Google Maps API</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* About & Skills */}
+                    <section id="about" className="py-20 px-6 bg-slate-800/30">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="flex flex-col md:flex-row gap-16">
+                                <div className="md:w-1/3 space-y-6">
+                                    <h3 className="text-2xl font-bold flex items-center gap-2">
+                                        <User className="text-sky-400" /> 關於我
+                                    </h3>
+                                    <div className="space-y-4 text-slate-300">
+                                        <p>
+                                            畢業於國立中央大學資訊管理學系，並在台大資管所深造。擁有扎實的學術背景與豐富的實戰經驗。
+                                        </p>
+                                        <p>
+                                            我的優勢在於能夠獨立完成從需求分析、系統架構設計到全端開發的完整流程。
+                                            特別擅長處理多角色權限系統、即時地圖追蹤以及 AI 對話式搜尋應用。
+                                        </p>
+                                        <div className="pt-4">
+                                            <h4 className="font-bold text-white mb-2">核心特質</h4>
+                                            <ul className="space-y-2">
+                                                <li className="flex items-center gap-2">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-sky-400"></div>
+                                                    執行力強：將想法快速轉化為產品
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-sky-400"></div>
+                                                    跨域整合：結合 AI 與傳統資訊系統
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-sky-400"></div>
+                                                    團隊協作：善於溝通與版本控管
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="md:w-2/3">
+                                    <h3 className="text-2xl font-bold flex items-center gap-2 mb-8">
+                                        <Code className="text-sky-400" /> 技術棧
+                                    </h3>
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <div className="glass-card p-6 rounded-xl border-l-4 border-sky-500">
+                                            <h4 className="font-bold mb-4 flex items-center gap-2">Frontend &amp; App</h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {skills.frontend.map(s => (
+                                                    <span
+                                                        key={s}
+                                                        className="px-3 py-1 bg-sky-500/10 text-sky-300 rounded-md text-sm tech-pill border border-sky-500/20"
+                                                    >
+                                                        {s}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="glass-card p-6 rounded-xl border-l-4 border-orange-500">
+                                            <h4 className="font-bold mb-4 flex items-center gap-2">Backend &amp; Cloud</h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {skills.backend.map(s => (
+                                                    <span
+                                                        key={s}
+                                                        className="px-3 py-1 bg-orange-500/10 text-orange-300 rounded-md text-sm tech-pill border border-orange-500/20"
+                                                    >
+                                                        {s}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="glass-card p-6 rounded-xl border-l-4 border-purple-500">
+                                            <h4 className="font-bold mb-4 flex items-center gap-2">AI &amp; Data</h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {skills.ai_data.map(s => (
+                                                    <span
+                                                        key={s}
+                                                        className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-md text-sm tech-pill border border-purple-500/20"
+                                                    >
+                                                        {s}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="glass-card p-6 rounded-xl border-l-4 border-emerald-500">
+                                            <h4 className="font-bold mb-4 flex items-center gap-2">DevOps &amp; Tools</h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {skills.tools.map(s => (
+                                                    <span
+                                                        key={s}
+                                                        className="px-3 py-1 bg-emerald-500/10 text-emerald-300 rounded-md text-sm tech-pill border border-emerald-500/20"
+                                                    >
+                                                        {s}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Featured Projects */}
+                    <section id="projects" className="py-20 px-6">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3">
+                                <Layers className="text-sky-400" /> 精選專案
+                            </h2>
+
+                            <div className="space-y-16">
+                                {/* Project 1 */}
+                                <div className="glass-card rounded-2xl p-8 md:p-10 relative overflow-hidden group">
+                                    <div className="absolute top-0 right-0 p-4 bg-sky-500 text-white text-xs font-bold rounded-bl-xl z-10">
+                                        進行中
+                                    </div>
+                                    <div className="grid md:grid-cols-5 gap-8">
+                                        <div className="md:col-span-3 space-y-6">
+                                            <div className="flex items-center gap-3">
+                                                <div className="p-3 bg-blue-500/20 rounded-lg text-blue-400">
+                                                    <Truck size={28} />
+                                                </div>
+                                                <h3 className="text-2xl font-bold">灑水車派遣與管理平台</h3>
+                                            </div>
+                                            <p className="text-slate-300 leading-relaxed">
+                                                一個專為解決公司、廠商與司機三方協作痛點而設計的綜合管理系統。
+                                                解決了傳統派單資訊不透明、路徑難以追蹤的問題。
+                                            </p>
+
+                                            <div className="space-y-4">
+                                                <div className="flex items-start gap-3">
+                                                    <Shield size={20} className="text-sky-400 mt-1 shrink-0" />
+                                                    <div>
+                                                        <strong className="text-slate-200">多方角色權限系統：</strong>
+                                                        <span className="text-slate-400 block text-sm">
+                                                            為「公司/廠商」、「司機」與「平台管理員」提供各自獨立的操作後台與權限控管。
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-start gap-3">
+                                                    <Map size={20} className="text-sky-400 mt-1 shrink-0" />
+                                                    <div>
+                                                        <strong className="text-slate-200">即時地圖與任務追蹤：</strong>
+                                                        <span className="text-slate-400 block text-sm">
+                                                            整合 Google Maps Platform，派單方可即時追蹤司機路線，司機可接收含地點標示的任務。
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-start gap-3">
+                                                    <Layout size={20} className="text-sky-400 mt-1 shrink-0" />
+                                                    <div>
+                                                        <strong className="text-slate-200">司機儀表板 &amp; 通訊：</strong>
+                                                        <span className="text-slate-400 block text-sm">
+                                                            專屬介面簡化回報流程，內建即時通訊系統 (Chat) 提升溝通效率。
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-wrap gap-2 pt-4">
+                                                {[
+                                                    'Flutter (Dart)',
+                                                    'GetX',
+                                                    'Firebase Auth',
+                                                    'Cloud Firestore',
+                                                    'Realtime Database',
+                                                    'Google Maps API',
+                                                    'FVM'
+                                                ].map(tag => (
+                                                    <span
+                                                        key={tag}
+                                                        className="px-3 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-mono border border-slate-700"
+                                                    >
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="md:col-span-2 flex flex-col justify-center items-center bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+                                            <div className="w-full h-full min-h-[250px] relative rounded-lg overflow-hidden bg-slate-800 flex items-center justify-center">
+                                                <div className="text-center space-y-2 opacity-50">
+                                                    <Map size={48} className="mx-auto mb-2" />
+                                                    <p className="font-mono text-sm">Interactive Map Interface</p>
+                                                    <p className="font-mono text-xs">Real-time Driver Tracking</p>
+                                                </div>
+                                                <div className="absolute bottom-4 left-4 right-4 h-16 bg-slate-700 rounded-md animate-pulse"></div>
+                                                <div className="absolute top-4 right-4 w-12 h-12 bg-sky-500 rounded-full opacity-20 animate-ping"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Project 2: SorePass */}
+                                <div className="glass-card rounded-2xl p-8 md:p-10">
+                                    <div className="grid md:grid-cols-5 gap-8">
+                                        <div className="md:col-span-3 space-y-6 order-2 md:order-1">
+                                            <div className="flex items-center gap-3">
+                                                <div className="p-3 bg-purple-500/20 rounded-lg text-purple-400">
+                                                    <Briefcase size={28} />
+                                                </div>
+                                                <h3 className="text-2xl font-bold">酸通 SorePass</h3>
+                                            </div>
+                                            <div className="flex items-center gap-2 text-yellow-400 text-sm font-bold">
+                                                <Award size={16} />
+                                                <span>中央資管校內資服競賽 第二名</span>
+                                                <span className="text-slate-500">|</span>
+                                                <span>IEEE ECICE 2024 論文發表</span>
+                                            </div>
+                                            <p className="text-slate-300 leading-relaxed">
+                                                結合生成式 AI 的個人化痠痛管理 App。透過微調 LLM 模型與 LangChain 框架，
+                                                提供引導式 AI 諮詢，並根據分析結果推薦 YouTube 舒緩影片。
+                                            </p>
+
+                                            <div className="grid grid-cols-2 gap-4">
+                                                <div className="p-4 bg-slate-800/50 rounded-lg border border-slate-700/50">
+                                                    <h4 className="text-sky-400 font-bold mb-1">AI 諮詢</h4>
+                                                    <p className="text-xs text-slate-400">
+                                                        微調 GPT-4o 模型，進行專業引導式問診。
+                                                    </p>
+                                                </div>
+                                                <div className="p-4 bg-slate-800/50 rounded-lg border border-slate-700/50">
+                                                    <h4 className="text-sky-400 font-bold mb-1">自動記錄</h4>
+                                                    <p className="text-xs text-slate-400">
+                                                        自動生成健康日誌，追蹤痠痛變化趨勢。
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-wrap gap-2 pt-4">
+                                                {['Flutter', 'LangChain', 'OpenAI API', 'MongoDB', 'Flask', 'Docker', 'GCP'].map(tag => (
+                                                    <span
+                                                        key={tag}
+                                                        className="px-3 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-mono border border-slate-700"
+                                                    >
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="md:col-span-2 order-1 md:order-2 bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 flex items-center justify-center">
+                                            <div className="w-full h-full min-h-[250px] bg-slate-800 rounded-lg flex items-center justify-center relative overflow-hidden">
+                                                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-purple-500 to-sky-500"></div>
+                                                <div className="text-center opacity-50">
+                                                    <MessageSquare size={48} className="mx-auto mb-2 text-purple-400" />
+                                                    <p className="font-mono text-sm">AI Chat Interface</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Other Projects Grid */}
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+                                {/* Skin Management */}
+                                <div className="glass-card p-6 rounded-xl hover:bg-slate-800/50 transition-colors">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div className="p-2 bg-pink-500/20 text-pink-400 rounded-lg">
+                                            <Smartphone size={20} />
+                                        </div>
+                                        <ExternalLink size={16} className="text-slate-500" />
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-2">肌膚管理平台協作</h3>
+                                    <p className="text-slate-400 text-sm mb-4 min-h-[60px]">
+                                        負責電商模組與個人資訊頁面開發。使用 Flutter 串接後端 API，
+                                        優化數據流處理與除錯，提升 App 穩定性。
+                                    </p>
+                                    <div className="flex flex-wrap gap-2 mt-auto">
+                                        <span className="text-xs px-2 py-1 bg-slate-700 rounded text-slate-300">Flutter</span>
+                                        <span className="text-xs px-2 py-1 bg-slate-700 rounded text-slate-300">API Integration</span>
+                                    </div>
+                                </div>
+
+                                {/* Tripy */}
+                                <div className="glass-card p-6 rounded-xl hover:bg-slate-800/50 transition-colors">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div className="p-2 bg-green-500/20 text-green-400 rounded-lg">
+                                            <Map size={20} />
+                                        </div>
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-2">Tripy 旅遊排程網</h3>
+                                    <p className="text-slate-400 text-sm mb-4 min-h-[60px]">
+                                        多人協作旅遊規劃平台。負責系統分析、資料庫設計與全端開發。
+                                        實現景點收藏與行程拖拉排序功能。
+                                    </p>
+                                    <div className="flex flex-wrap gap-2 mt-auto">
+                                        <span className="text-xs px-2 py-1 bg-slate-700 rounded text-slate-300">Java</span>
+                                        <span className="text-xs px-2 py-1 bg-slate-700 rounded text-slate-300">MySQL</span>
+                                        <span className="text-xs px-2 py-1 bg-slate-700 rounded text-slate-300">Bootstrap</span>
+                                    </div>
+                                </div>
+
+                                {/* AI Duststorm */}
+                                <div className="glass-card p-6 rounded-xl hover:bg-slate-800/50 transition-colors">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div className="p-2 bg-yellow-500/20 text-yellow-400 rounded-lg">
+                                            <Database size={20} />
+                                        </div>
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-2">海中沙塵暴預警 AI</h3>
+                                    <p className="text-slate-400 text-sm mb-4 min-h-[60px]">
+                                        AI GOOD 競賽評審肯定獎。利用 CNN 辨識海底影像中的沙塵暴特徵，
+                                        結合 LSTM 進行時間序列預測。
+                                    </p>
+                                    <div className="flex flex-wrap gap-2 mt-auto">
+                                        <span className="text-xs px-2 py-1 bg-slate-700 rounded text-slate-300">Python</span>
+                                        <span className="text-xs px-2 py-1 bg-slate-700 rounded text-slate-300">TensorFlow</span>
+                                        <span className="text-xs px-2 py-1 bg-slate-700 rounded text-slate-300">OpenCV</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Timeline / Experience */}
+                    <section id="experience" className="py-20 px-6 bg-slate-800/30">
+                        <div className="max-w-4xl mx-auto">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3 justify-center">
+                                <Briefcase className="text-sky-400" /> 經歷與學歷
+                            </h2>
+
+                            <div className="relative border-l border-slate-700 ml-4 md:ml-0 md:pl-0 space-y-12">
+                                {/* Item 1 */}
+                                <div className="relative md:grid md:grid-cols-5 md:gap-8 group">
+                                    <div className="md:col-span-2 md:text-right mb-2 md:mb-0">
+                                        <span className="text-sky-400 font-mono text-sm">2024 - Present</span>
+                                        <h3 className="text-xl font-bold mt-1">灑水車管理平台開發</h3>
+                                        <p className="text-slate-400 text-sm">獨立開發者 / 協作</p>
+                                    </div>
+                                    <div className="absolute -left-[21px] md:left-auto md:right-0 md:mx-auto md:w-full md:flex md:justify-center md:items-center md:relative md:col-span-1">
+                                        <div className="w-4 h-4 rounded-full bg-sky-500 border-4 border-slate-900 shadow-[0_0_0_4px_rgba(56,189,248,0.2)]"></div>
+                                    </div>
+                                    <div className="md:col-span-2 pl-6 md:pl-0">
+                                        <p className="text-slate-300 text-sm">
+                                            負責完整的系統開發週期，包含 Flutter 前端架構、Firebase 後端邏輯設計以及 Google Maps 整合。
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Item 2 */}
+                                <div className="relative md:grid md:grid-cols-5 md:gap-8 group">
+                                    <div className="md:col-span-2 md:text-right mb-2 md:mb-0">
+                                        <span className="text-slate-500 font-mono text-sm">Project Based</span>
+                                        <h3 className="text-xl font-bold mt-1">肌膚管理平台協作</h3>
+                                        <p className="text-slate-400 text-sm">前端工程師</p>
+                                    </div>
+                                    <div className="absolute -left-[21px] md:left-auto md:right-0 md:mx-auto md:w-full md:flex md:justify-center md:items-center md:relative md:col-span-1">
+                                        <div className="w-4 h-4 rounded-full bg-slate-600 border-4 border-slate-900"></div>
+                                    </div>
+                                    <div className="md:col-span-2 pl-6 md:pl-0">
+                                        <p className="text-slate-300 text-sm">
+                                            專注於電商模組串接與使用者體驗優化，處理複雜的 API 回應與狀態管理。
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Item 3 */}
+                                <div className="relative md:grid md:grid-cols-5 md:gap-8 group">
+                                    <div className="md:col-span-2 md:text-right mb-2 md:mb-0">
+                                        <span className="text-slate-500 font-mono text-sm">2024.06 - Present</span>
+                                        <h3 className="text-xl font-bold mt-1">聚陽實業</h3>
+                                        <p className="text-slate-400 text-sm">資訊處 助理工程師 (實習)</p>
+                                    </div>
+                                    <div className="absolute -left-[21px] md:left-auto md:right-0 md:mx-auto md:w-full md:flex md:justify-center md:items-center md:relative md:col-span-1">
+                                        <div className="w-4 h-4 rounded-full bg-slate-600 border-4 border-slate-900"></div>
+                                    </div>
+                                    <div className="md:col-span-2 pl-6 md:pl-0">
+                                        <p className="text-slate-300 text-sm">
+                                            參與企業內部專案開發，協助數位轉型與軟體介面設計。
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Item 4 */}
+                                <div className="relative md:grid md:grid-cols-5 md:gap-8 group">
+                                    <div className="md:col-span-2 md:text-right mb-2 md:mb-0">
+                                        <span className="text-slate-500 font-mono text-sm">Education</span>
+                                        <h3 className="text-xl font-bold mt-1">國立中央大學</h3>
+                                        <p className="text-slate-400 text-sm">資訊管理學系 (輔修資工)</p>
+                                    </div>
+                                    <div className="absolute -left-[21px] md:left-auto md:right-0 md:mx-auto md:w-full md:flex md:justify-center md:items-center md:relative md:col-span-1">
+                                        <div className="w-4 h-4 rounded-full bg-slate-600 border-4 border-slate-900"></div>
+                                    </div>
+                                    <div className="md:col-span-2 pl-6 md:pl-0">
+                                        <p className="text-slate-300 text-sm">
+                                            系排 8/120 (6.67%)。人工智慧跨域應用學分學程修畢。多次獲得書卷獎。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Honors */}
+                    <section id="honors" className="py-20 px-6">
+                        <div className="max-w-4xl mx-auto">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center gap-3">
+                                <Award className="text-sky-400" /> 榮譽與獎項
+                            </h2>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {[
+                                    { title: "111學年 管理學院院長獎", desc: "該學年累積系排第 8 名", icon: "🏆" },
+                                    { title: "中央資管 校內專題資服競賽", desc: "第二名 (SorePass)", icon: "🥈" },
+                                    { title: "112年度 AI GOOD 競賽", desc: "評審肯定獎 (海中沙塵暴預警)", icon: "🎖️" },
+                                    { title: "2024 航港大數據創意應用競賽", desc: "佳作", icon: "🥉" },
+                                    { title: "書卷獎 x3", desc: "111-1 (第1名), 111-2 (第1名), 112-1 (第2名)", icon: "📜" },
+                                    { title: "TOEIC", desc: "765 分", icon: "🇺🇸" }
+                                ].map((item, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="flex items-start gap-4 p-4 rounded-xl border border-slate-800 hover:border-slate-600 transition-colors bg-slate-900/50"
+                                    >
+                                        <span className="text-2xl">{item.icon}</span>
+                                        <div>
+                                            <h4 className="font-bold text-lg">{item.title}</h4>
+                                            <p className="text-slate-400 text-sm">{item.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="py-12 border-t border-slate-800 text-center">
+                        <p className="text-slate-500 mb-4">
+                            Designed &amp; Built by Siang-Min Ke
+                        </p>
+                        <div className="flex justify-center gap-6">
+                            <a
+                                href="https://github.com/yourgithub"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-slate-400 hover:text-sky-400 transition-colors"
+                            >
+                                <Github size={24} />
+                            </a>
+                            <a
+                                href="mailto:your.email@example.com"
+                                className="text-slate-400 hover:text-sky-400 transition-colors"
+                            >
+                                <Mail size={24} />
+                            </a>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Portfolio />);
     </script>
-  </body>
+</body>
+
 </html>
