@@ -1,742 +1,269 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>柯翔閔 Siang-Min Ke | APP 開發者</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons (Vanilla JS Version) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>柯翔閔 Siang-Min Ke | APP 開發者 | 在讀研究生</title>
 
-    <style>
-        /* --- 變數與基礎設定 --- */
-        :root {
-            --bg-color: #0f172a;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --accent-sky: #38bdf8;
-            --accent-purple: #818cf8;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(148, 163, 184, 0.1);
-            --glass-blur: 12px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+/* ================= 基本設定 ================= */
 
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --border: #334155;
+  --primary: #38bdf8;
+  --accent: #a78bfa;
+  --text-main: #f8fafc;
+  --text-sub: #94a3b8;
+}
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.3s;
-        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        /* --- 背景裝飾 --- */
-        .bg-blob {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: -1;
-            opacity: 0.4;
-        }
-        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--accent-sky); animation: float 10s infinite alternate; }
-        .blob-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: var(--accent-purple); animation: float 12s infinite alternate-reverse; }
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+  line-height: 1.7;
+}
 
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(30px, 50px); }
-        }
+h1, h2, h3 {
+  font-weight: 700;
+}
 
-        /* --- 導覽列 --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 2rem;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        nav.scrolled {
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--card-border);
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .logo span { color: var(--accent-sky); }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        .nav-links a {
-            color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-        .nav-links a:hover { color: var(--accent-sky); }
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 1.5rem;
+}
 
-        /* 手機版選單隱藏 */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-        }
+/* ================= 導覽列 ================= */
 
-        /* --- 通用容器 --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        section {
-            padding: 5rem 0;
-        }
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 1.2rem 2rem;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+}
 
-        /* --- Hero 區塊 --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 4rem;
-        }
-        .hero-content {
-            max-width: 650px;
-        }
-        .status-badge {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent-sky);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            margin-bottom: 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero h2 {
-            font-size: 1.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
-        .hero p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-sky) 0%, var(--accent-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-        }
-        .btn-primary {
-            background: var(--accent-sky);
-            color: #0f172a;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
-        }
-        .btn-secondary {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-primary);
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-        }
+.logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+}
 
-        /* --- 卡片樣式 --- */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 2rem;
-            backdrop-filter: blur(var(--glass-blur));
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(56, 189, 248, 0.3);
-        }
+.logo span {
+  color: var(--primary);
+}
 
-        /* --- 關於與技能 --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-        }
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        .section-title i { color: var(--accent-sky); }
-        
-        .skill-category {
-            margin-bottom: 1.5rem;
-        }
-        .skill-title {
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-primary);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-        .tag {
-            font-size: 0.85rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--accent-sky);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.2s;
-        }
-        .tag:hover {
-            background: rgba(56, 189, 248, 0.15);
-            border-color: rgba(56, 189, 248, 0.3);
-        }
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
 
-        /* --- 專案區塊 --- */
-        .projects-grid {
-            display: grid;
-            gap: 2rem;
-        }
-        .project-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-        .project-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(56, 189, 248, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-sky);
-        }
-        .project-status {
-            font-size: 0.75rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            background: var(--accent-sky);
-            color: #000;
-            font-weight: 700;
-        }
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .project-desc {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-        .project-features li {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            list-style: none;
-            display: flex;
-            gap: 0.5rem;
-        }
-        .project-features li::before {
-            content: "▹";
-            color: var(--accent-sky);
-        }
+.nav-links a {
+  color: var(--text-sub);
+  transition: 0.3s;
+}
 
-        /* --- 經歷時間軸 --- */
-        .timeline {
-            position: relative;
-            border-left: 2px solid rgba(148, 163, 184, 0.2);
-            margin-left: 1rem;
-            padding-left: 2rem;
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: -2.6rem;
-            top: 0.2rem;
-            width: 1.2rem;
-            height: 1.2rem;
-            background: var(--bg-color);
-            border: 2px solid var(--accent-sky);
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
-        }
-        .timeline-date {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--accent-sky);
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-        }
-        .timeline-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-        }
-        .timeline-role {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.8rem;
-        }
+.nav-links a:hover {
+  color: var(--primary);
+}
 
-        /* --- 榮譽區塊 --- */
-        .honors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        .honor-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem;
-        }
-        .honor-icon {
-            font-size: 1.5rem;
-        }
+/* ================= Hero ================= */
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            border-top: 1px solid var(--card-border);
-            margin-top: 3rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
 
-        /* --- 動畫 --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.hero h1 {
+  font-size: 3rem;
+}
 
-        /* --- 響應式調整 --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .container { padding: 0 1rem; }
-        }
-    </style>
+.hero h1 span {
+  color: var(--primary);
+}
+
+.hero p {
+  margin-top: 1rem;
+  color: var(--text-sub);
+  font-size: 1.1rem;
+}
+
+.hero .btn {
+  margin-top: 2rem;
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #000;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.hero .btn:hover {
+  background: #0ea5e9;
+}
+
+/* ================= 區塊 ================= */
+
+section {
+  padding: 6rem 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+}
+
+/* ================= 卡片 ================= */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 1.8rem;
+  border-radius: 14px;
+  margin-bottom: 2rem;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+}
+
+.card h3 {
+  margin-bottom: 0.8rem;
+}
+
+.card p {
+  color: var(--text-sub);
+  margin-bottom: 0.5rem;
+}
+
+.card ul {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+}
+
+.card li {
+  margin-bottom: 0.4rem;
+  color: var(--text-sub);
+}
+
+/* ================= Footer ================= */
+
+footer {
+  text-align: center;
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+  color: var(--text-sub);
+}
+
+/* ================= 手機版 ================= */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- 背景動態光暈 -->
-    <div class="bg-blob blob-1"></div>
-    <div class="bg-blob blob-2"></div>
+<nav>
+  <div class="logo">KTS<span>.dev</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-    <!-- 導覽列 -->
-    <nav id="navbar">
-        <div class="logo">&lt;Siang-Min<span>/&gt;</span></div>
-        <div class="nav-links">
-            <a href="#about">關於我</a>
-            <a href="#projects">精選專案</a>
-            <a href="#experience">經歷</a>
-            <a href="#honors">榮譽</a>
-        </div>
-    </nav>
+<!-- Hero -->
+<section class="hero container">
+  <div>
+    <h1>Hi, I'm <span>KTS</span></h1>
+    <p>AI Engineer × Full Stack Developer × LLM System Designer</p>
+    <a href="#projects" class="btn">View Projects</a>
+  </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content reveal">
-                <span class="status-badge">Available for hire</span>
-                <h1>我是 <span class="gradient-text">柯翔閔</span></h1>
-                <h2>全端工程師 & AI 整合專家</h2>
-                <p>擅長將複雜的業務邏輯轉化為優雅的應用程式。專注於 Flutter APP 開發、Firebase 架構設計以及生成式 AI 的落地應用。致力於創造具有實際商業價值的數位產品。</p>
-                <div class="btn-group">
-                    <a href="mailto:your.email@example.com" class="btn btn-primary">
-                        <i data-lucide="mail"></i> 聯絡我
-                    </a>
-                    <a href="https://github.com" target="_blank" class="btn btn-secondary">
-                        <i data-lucide="github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Experience -->
+<section id="experience" class="container">
+  <h2 class="section-title">工作與專案經歷</h2>
 
-    <!-- 關於與技能 -->
-    <section id="about">
-        <div class="container">
-            <h3 class="section-title reveal"><i data-lucide="user"></i> 關於 & 技術</h3>
-            <div class="about-grid reveal">
-                <!-- 介紹 -->
-                <div>
-                    <p style="margin-bottom: 1rem; color: var(--text-secondary);">
-                        目前就讀於台大資管所，大學畢業於國立中央大學資訊管理學系。擁有扎實的學術背景與豐富的實戰經驗。
-                    </p>
-                    <p style="margin-bottom: 1rem; color: var(--text-secondary);">
-                        我的優勢在於能夠獨立完成從需求分析、系統架構設計到APP開發的完整流程，擅長與需求者建立有效且良好的溝通。
-                    </p>
-                    <div style="margin-top: 1.5rem;">
-                        <strong style="color: #fff;">核心特質：</strong>
-                        <ul style="margin-top: 0.5rem; list-style: none; color: var(--text-secondary);">
-                            <li>▹ 執行力強：將想法快速轉化為產品</li>
-                            <li>▹ 跨域整合：結合不同領域運用建構資訊系統</li>
-                            <li>▹ 團隊協作：善於溝通與專案管理以及發掘他人潛力</li>
-                        </ul>
-                    </div>
-                </div>
+  <div class="card">
+    <h3>灑水車管理平台｜獨立開發</h3>
+    <p>Flutter × Firebase × Google Maps</p>
+    <ul>
+      <li>完整系統開發週期</li>
+      <li>前後端架構設計</li>
+      <li>地圖調度功能實作</li>
+    </ul>
+  </div>
 
-                <!-- 技能 -->
-                <div>
-                    <div class="card">
-                        <div class="skill-category">
-                            <div class="skill-title"><i data-lucide="smartphone" size="16"></i> Frontend & App</div>
-                            <div class="tags">
-                                <span class="tag">Flutter (Dart)</span>
-                                <span class="tag">GetX</span>
-                                <span class="tag">HTML/CSS/JS</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <div class="skill-title"><i data-lucide="server" size="16"></i> Backend & Cloud</div>
-                            <div class="tags">
-                                <span class="tag">Firebase (Auth, Firestore)</span>
-                                <span class="tag">Flask、FastAPI (Python)</span>
-                                <span class="tag">Java</span>
-                                <span class="tag">MySQL、MongoBD</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <div class="skill-title"><i data-lucide="cpu" size="16"></i> AI & Data</div>
-                            <div class="tags">
-                                <span class="tag">LangChain</span>
-                                <span class="tag">API 串接</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <div class="skill-title"><i data-lucide="wrench" size="16"></i> Tools</div>
-                            <div class="tags">
-                                <span class="tag">Git</span>
-                                <span class="tag">Docker</span>
-                                <span class="tag">GCP</span>
-                                <span class="tag">Google Maps Platform</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="card">
+    <h3>Panco 美業平台｜Flutter 工程師</h3>
+    <ul>
+      <li>RESTful API 串接</li>
+      <li>依 Figma 實作 UI</li>
+    </ul>
+  </div>
 
-    <!-- 專案區塊 -->
-    <section id="projects">
-        <div class="container">
-            <h3 class="section-title reveal"><i data-lucide="layers"></i> 精選專案</h3>
-            <div class="projects-grid">
-                
-                <!-- 灑水車平台 -->
-                <div class="card project-card reveal">
-                    <div class="project-header">
-                        <div class="project-icon"><i data-lucide="truck"></i></div>
-                        <span class="project-status">進行中</span>
-                    </div>
-                    <h4 class="project-title">灑水車派遣與管理平台</h4>
-                    <p class="project-desc">一個專為解決公司、廠商與司機三方協作痛點而設計的綜合管理系統。解決了傳統派單資訊不透明、路徑難以追蹤的問題。</p>
-                    <ul class="project-features">
-                        <li><strong>多方角色權限：</strong>為「公司/廠商」、「司機」與「平台管理員」提供獨立後台。</li>
-                        <li><strong>即時地圖追蹤：</strong>整合 Google Maps，派單方可即時追蹤司機路線與任務點。</li>
-                        <li><strong>司機儀表板：</strong>專屬介面簡化回報流程，內建即時通訊 (Chat)。</li>
-                    </ul>
-                    <div class="tags" style="margin-top: 1.5rem;">
-                        <span class="tag">Flutter</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">Google Maps API</span>
-                    </div>
-                </div>
+</section>
 
-                <!-- SorePass -->
-                <div class="card project-card reveal">
-                    <div class="project-header">
-                        <div class="project-icon"><i data-lucide="briefcase"></i></div>
-                        <span class="project-status">已結案</span>
-                    </div>
-                    <h4 class="project-title">Skin Management</h4>
-                    <p class="project-desc">
-                        肌膚管理平台協作
-                    </p>
-                    <ul class="project-features">
-                        <li><strong>負責電商模組：</strong>串接後端LinePay API，建構完整付款流程操作介面。</li>
-                        <li><strong>負責個人資訊頁面：</strong>串接後端API，建構符合Figma規格的介面。</li>
-                    </ul>
-                    <div class="tags" style="margin-top: 1.5rem;">
-                        <span class="tag">LangChain</span>
-                        <span class="tag">OpenAI API</span>
-                        <span class="tag">Flutter</span>
-                    </div>
-                </div>
+<!-- Projects -->
+<section id="projects" class="container">
+  <h2 class="section-title">AI 專案與研究</h2>
 
-                <div class="card project-card reveal">
-                    <div class="project-header">
-                        <div class="project-icon"><i data-lucide="briefcase"></i></div>
-                    </div>
-                    <h4 class="project-title">酸通 SorePass <span style="font-size: 0.9rem; color: #fbbf24; margin-left: 0.5rem;">★ 獲獎專案</span></h4>
-                    <p class="project-desc">
-                        結合生成式 AI 的個人化痠痛管理 App。獲得大專院校資訊應用服務創新競賽-聯新國際智慧健康照護組最佳潛力獎。
-                    </p>
-                    <ul class="project-features">
-                        <li><strong>AI 諮詢：</strong>微調 GPT-4o 模型與 LangChain 框架，進行引導式問診。</li>
-                        <li><strong>影音推薦：</strong>根據診斷結果自動搜尋並推薦 YouTube 舒緩影片。</li>
-                        <li><strong>健康日誌：</strong>自動記錄追蹤痠痛變化趨勢。</li>
-                    </ul>
-                    <div class="tags" style="margin-top: 1.5rem;">
-                        <span class="tag">LangChain</span>
-                        <span class="tag">OpenAI API</span>
-                        <span class="tag">Flutter</span>
-                    </div>
-                </div>
+  <div class="card">
+    <h3>Podcast Semantic Search × RAG System</h3>
+    <ul>
+      <li>BAAI/bge-m3 Embedding</li>
+      <li>FAISS + Reranker 架構</li>
+      <li>BERTopic 主題分群</li>
+      <li>gpt-4o-mini 摘要生成</li>
+    </ul>
+  </div>
 
-                <!-- 次要專案 Grid -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-        
-                    <!-- Tripy -->
-                    <div class="card reveal">
-                        <div style="margin-bottom: 1rem; color: #4ade80;"><i data-lucide="map"></i></div>
-                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Tripy 旅遊排程網</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
-                            多人協作旅遊規劃平台。負責系統分析、資料庫設計與全端開發。實現景點收藏與行程拖拉排序。
-                        </p>
-                        <div class="tags"><span class="tag">Java</span><span class="tag">MySQL</span></div>
-                    </div>
+  <div class="card">
+    <h3>SorePass 生成式 AI 健康管理 App</h3>
+    <ul>
+      <li>GPT-4o API + LangChain</li>
+      <li>引導式對話設計</li>
+      <li>YouTube 推薦系統</li>
+    </ul>
+  </div>
 
-                    <!-- AI Duststorm -->
-                    <div class="card reveal">
-                        <div style="margin-bottom: 1rem; color: #fbbf24;"><i data-lucide="database"></i></div>
-                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">海中沙塵暴預警 AI</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
-                            AI GOOD 競賽評審肯定獎。利用 CNN 辨識海底影像中的沙塵暴特徵，結合 LSTM 進行時間序列預測，建構海底沙塵暴預警平臺。
-                        </p>
-                        <div class="tags"><span class="tag">Python</span><span class="tag">TensorFlow</span></div>
-                    </div>
-                </div>
+</section>
 
-            </div>
-        </div>
-    </section>
+<footer>
+  © 2026 KTS · AI Engineer Portfolio
+</footer>
 
-    <!-- 經歷 -->
-    <section id="experience">
-        <div class="container">
-            <h3 class="section-title reveal"><i data-lucide="briefcase"></i> 經歷與學歷</h3>
-            <div class="timeline reveal">
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">Education 2025.09 - Present</div>
-                    <div class="timeline-title">國立台灣大學</div>
-                    <div class="timeline-role">資訊管理學系研究所</div>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                        系排 8/120 (6.67%)。人工智慧跨域應用學分學程修畢。多次獲得書卷獎。
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2025.08 - Present</div>
-                    <div class="timeline-title">灑水車管理平台開發</div>
-                    <div class="timeline-role">獨立開發者</div>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                        負責完整的系統開發週期，包含 Flutter 前端架構、Firebase 後端邏輯設計以及 Google Maps 整合。
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">Project Based</div>
-                    <div class="timeline-title">肌膚管理平台</div>
-                    <div class="timeline-role">前端工程師 /協作</div>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                        專注於電商模組和個人資訊頁面串接，處理複雜的 API 回應與狀態管理。
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2024.06 - 2025.06</div>
-                    <div class="timeline-title">聚陽實業</div>
-                    <div class="timeline-role">資訊處 助理工程師 (實習)</div>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                        參與企業內部專案開發，協助數位轉型與軟體介面設計。
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">Education</div>
-                    <div class="timeline-title">國立中央大學</div>
-                    <div class="timeline-role">資訊管理學系 (輔修資工)</div>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                        系排 8/120 (6.67%)。人工智慧跨域應用學分學程修畢。多次獲得書卷獎。
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 榮譽 -->
-    <section id="honors">
-        <div class="container">
-            <h3 class="section-title reveal"><i data-lucide="award"></i> 榮譽與獎項</h3>
-            <div class="honors-grid reveal">
-                <div class="card honor-card">
-                    <div class="honor-icon">🏆</div>
-                    <div>
-                        <h4>111學年 管理學院院長獎</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">該學年累積系排第 8 名</p>
-                    </div>
-                </div>
-                <div class="card honor-card">
-                    <div class="honor-icon">🥈</div>
-                    <div>
-                        <h4>中央資管 校內專題資服競賽</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">第二名 (SorePass)</p>
-                    </div>
-                </div>
-                <div class="card honor-card">
-                    <div class="honor-icon">🎖️</div>
-                    <div>
-                        <h4>112年度 AI GOOD 競賽</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">評審肯定獎 (海中沙塵暴預警)</p>
-                    </div>
-                </div>
-                <div class="card honor-card">
-                    <div class="honor-icon">🥉</div>
-                    <div>
-                        <h4>2024 航港大數據創意應用競賽</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">佳作</p>
-                    </div>
-                </div>
-                <div class="card honor-card">
-                    <div class="honor-icon">📜</div>
-                    <div>
-                        <h4>書卷獎 x3</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">111-1(第1名), 111-2(第1名), 112-1(第2名)</p>
-                    </div>
-                </div>
-                <div class="card honor-card">
-                    <div class="honor-icon">🇺🇸</div>
-                    <div>
-                        <h4>TOEIC</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">765 分</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>Designed & Built by Siang-Min Ke © 2024</p>
-        </div>
-    </footer>
-
-    <script>
-        // 初始化 Icons
-        lucide.createIcons();
-
-        // 導覽列滾動效果
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // 滾動漸顯動畫
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealOnScroll = () => {
-            const windowHeight = window.innerHeight;
-            const elementVisible = 150;
-
-            revealElements.forEach((element) => {
-                const elementTop = element.getBoundingClientRect().top;
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('active');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', revealOnScroll);
-        // 觸發一次以顯示初始內容
-        revealOnScroll();
-    </script>
 </body>
 </html>
